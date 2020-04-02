@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+<link href="{{ asset('css/tables.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Choix du cadeau</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="pricing-container cd-has-margins">
+                <div class="form_title">
+                    <h3><strong>2</strong>Choix du cadeau</h3>
+                    <p>La carte cadeau est valable 1 an et utilisable plusieurs fois. Il est aussi possible de compléter pour acheter un atelier au coût supérieur.</p>
+                </div>
+                <!--/pricing-switcher -->
+                <ul class="pricing-list bounce-invert" style="display:flex;justify-content:center;flex-wrap:wrap;">
+                    <li class="popular">
+                        <ul class="pricing-wrapper">
+                            <li data-type="monthly" class="is-visible is-ended">
+                                <header class="pricing-header">
+                                    <h2>Offrir un montant</h2>
+                                </header>
+                                <!-- /pricing-header -->
+                                <div class="pricing-body">
+                                    <ul class="pricing-features">
+                                        <li style="white-space:pre-wrap">Vous créditez une carte cadeau, elle / il choisit parmi tous les ateliers.<br> Pour cela, vous devrez saisir le montant à la prochaine étape.</li>
+                                    </ul>
+                                </div>
+                                <!-- /pricing-body -->
+                                <footer class="pricing-footer">
+                                    <a class="select-plan" href="{{ path('front_gift_choice_amount') }}">Choisir le montant</a>
+                                </footer>
+                            </li>
+                        </ul>
+                        <!-- /pricing-wrapper -->
+                    </li>
+                    <li class="popular">
+                        <ul class="pricing-wrapper">
+                            <li data-type="monthly" class="is-visible is-ended">
+                                <header class="pricing-header">
+                                    <h2>Offrir un atelier</h2>
+                                </header>
+                                <!-- /pricing-header -->
+                                <div class="pricing-body">
+                                    <ul class="pricing-features">
+                                        <li style="white-space:pre-wrap">Vous savez ce qu'elle / il veut, offrez-lui un atelier de votre choix. Pour cela, sélectionnez un atelier et cliquez sur le bouton "<em>Offrir en carte cadeau</em>".</li>
+                                    </ul>
+                                </div>
+                                <!-- /pricing-body -->
+                                <footer class="pricing-footer">
+                                    <a class="select-plan" href="{{ path('front_search_event') }}">Choisir l'atelier</a>
+                                </footer>
+                            </li>
+                        </ul>
+                        <!-- /cd-pricing-wrapper -->
+                    </li>
+                </ul>
+                <!-- /pricing-list -->
+            </div>
+            <!-- /pricing-container -->
+        </div>
+    </div>
+{% endblock %}

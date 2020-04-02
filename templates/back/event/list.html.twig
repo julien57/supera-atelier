@@ -1,0 +1,144 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Liste événements{% endblock %}
+
+{% block style %}
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/toastr/toastr.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <h1>Liste des ateliers</h1>
+                </div>
+                <div class="col-sm-3">
+                    <a href="{{ path('admin_event_add') }}" class="btn btn-block btn-info" style="color:white;cursor:pointer;">Créer un atelier</a>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des ateliers</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th>Titre</th>
+                            <th>Prix</th>
+                            <th>Note</th>
+                            <th>Formateur</th>
+                            <th>Nb dates</th>
+                            <th>Nb notes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in events %}
+                            <tr>
+                                <td>{{ event.id }}</td>
+                                <td>{{ event.title }}</td>
+                                <td>{{ event.price }}</td>
+                                <td>{{ event.note ? event.note : 'Aucune note' }}</td>
+                                <td>{{ event.formatorName }}</td>
+                                <td>{{ event.workshopDates|length }}</td>
+                                <td>{{ event.comments|length }}</td>
+                                <td style="width:40%">
+                                    <div class="row">
+                                        <a class="btn btn-info btn-sm" href="{{ path('admin_event_edit', {'id': event.id}) }}">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Editer
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="{{ path('admin_event_remove', {'id': event.id}) }}" onclick="return confirm('Attention ! Etes-vous sûr de vouloir supprimer cet atelier ? Les commentaires ainsi que les bons cadeaux liés seront également supprimés.');">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Supprimer
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" target="_blank" href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Voir
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center"><div class="navigation">
+                    {{ knp_pagination_render(events) }}
+                </div></p>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<!-- Bootstrap 4 -->
+<script src="{{ asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('back/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('back/plugins/toastr/toastr.min.js') }}"></script>
+
+{% if app.request.get('action') == 'success' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'success',
+                title: ' Evénement ajouté avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% if app.request.get('action') == 'editsuccess' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'info',
+                title: ' Evènement edité avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,379 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification atelier {{ event.title }} - Mon espace{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - <em>{{ event.title }}</em></h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+
+    <div class="row">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'w-100'}}) }}
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="box_cart">
+                    <div class="form_title">
+                        <h3>Information atelier : <em>{{ event.title }}</em></h3>
+                    </div>
+                    <div class="step">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_row(form.formatorName, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    {{ form_row(form.description, {'attr': {'class': 'form-control', 'rows': 5}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_row(form.eventType, {'attr': {'class': 'form-control', 'rows': 5}}) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-5">
+                <div class="col-sm-12 mt-1">
+                    <div class="form-group">
+                        {{ form_row(form.price, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-1">
+                    <div class="form-group">
+                        {{ form_row(form.nbMembers, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+            <!-- /col -->
+        </div>
+        <hr>
+        <div class="form_title">
+            <h3><strong>+</strong>Dates de l'événement</h3>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.workshopDates) }}
+            <ul class="row" id="date-fields-list"
+                data-prototype="{{ form_widget(form.workshopDates.vars.prototype)|e('html_attr') }}"
+                data-widget-dates="{{ '<li class="child-step col-md-4 mt-2"></li>'|e }}"
+                data-widget-counter="{{ form.workshopDates|length }}">
+                {% for workshopDate in form.workshopDates %}
+                    <li class="child-step col-md-4 mt-2">
+                        Du{{ form_widget(workshopDate.startAt, {'attr': {'class': 'form-control date-picker', 'autocomplete': 'off'}}) }}
+                        Au {{ form_widget(workshopDate.endAt, {'attr': {'class': 'form-control date-picker', 'autocomplete': 'off'}}) }}
+                        <a href="{{ path('front_space_workshop_remove_date', {'id': workshopDate.vars.value.id}) }}" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette date</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button"
+                    class="add-another-date-widget btn btn-success"
+                    data-list-selector="#date-fields-list">Ajouter une date</button>
+        </div>
+        <hr>
+        <div class="form_title">
+            <h3><strong>+</strong>Photos de l'événement</h3>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.photos) }}
+            <ul class="row" id="email-fields-list"
+                data-prototype="{{ form_widget(form.photos.vars.prototype)|e('html_attr') }}"
+                data-widget-tags="{{ '<li class="child-step col-md-4 mt-2"></li>'|e }}"
+                data-widget-counter="{{ form.photos|length }}">
+                {% for photo in form.photos %}
+                    <li class="child-step col-md-4 mt-2">
+                        <h4 class="col-md-12" style="background-color:#009973;color:white;text-align:center;border-radius:5px"><span style="text-align:center">Photo {{ loop.index }}</span></h4>
+                        <div class="col-md-12"><img style="max-height:180px;width:100%" src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ photo.url.vars.data }}"></div>
+                        {{ form_widget(photo) }}
+                        <button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette photo</button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button"
+                    class="add-another-collection-widget btn btn-success"
+                    data-list-selector="#email-fields-list">Ajouter une photo</button>
+        </div>
+        <!--End step -->
+        <div class="cart-options clearfix">
+            <div class="float-left fix_mobile">
+                <a type="submit" href="{{ path('front_space_workshop_enterprise') }}" class="btn btn-secondary">Retour</a>
+            </div>
+            <div class="float-right fix_mobile">
+                <button type="submit" class="btn_1 outline">Enregistrer</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <!--/row-->
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('previewImage');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+<script>
+    jQuery(document).ready(function () {
+
+        $collectionHolder = $('ul.tags');
+
+        // add a delete link to all of the existing tag form li elements
+        $collectionHolder.find('li').each(function() {
+
+            addTagFormDeleteLink($(this));
+        });
+
+        jQuery('.add-another-collection-widget').click(function (e) {
+            var list = jQuery(jQuery(this).attr('data-list-selector'));
+
+            // Try to find the counter of the list or use the length of the list
+            counter = list.data('widget-counter') || list.children().length;
+
+            // grab the prototype template
+            var newWidget = list.attr('data-prototype');
+            counter++;
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = `<div id="event_space_photos_${counter}"><div><input type="file" id="event_space_photos_${counter}_url" name="event_space[photos][${counter}][url]" required="required" /></div></div>`;
+            // Increase the counter
+
+            // And store it, the length cannot be used if deleting widgets is allowed
+            list.data('widget-counter', counter);
+
+            // create a new list element and add it to the list
+            var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+            addTagFormDeleteLink(newElem);
+            var stepNb = `<h4 class="col-md-12" style="background-color:#009973;color:white;text-align:center;border-radius:5px"><span style="text-align:center">Photo ${counter}</span></h4><img style="width:100%;height:180px;background:rgba(34,139,34,0.2);" id="previewPhoto${counter}">`;
+            newElem.prepend(stepNb);
+
+            newElem.appendTo(list);
+
+            document.getElementById(`event_form_photos_${counter}_url`).onchange = function () {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById(`previewPhoto${counter}`).src = e.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            };
+        });
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette photo</button>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                counter--;
+
+                $tagFormLi.remove();
+            });
+        }
+
+        jQuery('.add-another-date-widget').click(function (e) {
+            var list = jQuery(jQuery(this).attr('data-list-selector'));
+            // Try to find the counter of the list or use the length of the list
+            var counter = list.data('widget-counter') || list.children().length;
+
+            // grab the prototype template
+            var newWidget = list.attr('data-prototype');
+
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = newWidget.replace(/__name__/g, counter);
+            newWidget = `<div id="event_space_workshopDates_1"><div><label for="event_space_workshopDates_${counter}_startAt" class="required">Du</label><input type="text" id="event_space_workshopDates_${counter}_startAt" name="event_space[workshopDates][${counter}][startAt]" class="form-control" autocomplete="off" required="required" /></div><div><label for="event_space_workshopDates_${counter}_endAt" class="required">Au</label><input type="text" id="event_space_workshopDates_${counter}_endAt" name="event_space[workshopDates][${counter}][endAt]" class="form-control" autocomplete="off" required="required" /></div></div>`
+            var startAtName = `event_space_workshopDates_${counter}_startAt`;
+            var endAtName = `event_space_workshopDates_${counter}_endAt`;
+            // Increase the counter
+            counter++;
+            // And store it, the length cannot be used if deleting widgets is allowed
+            list.data('widget-counter', counter);
+
+            // create a new list element and add it to the list
+            var newElem = jQuery(list.attr('data-widget-dates')).html(newWidget);
+            addDateFormDeleteLink(newElem);
+            newElem.appendTo(list);
+
+            $('#'+startAtName).daterangepicker({
+                autoUpdateInput: false,
+                linkedCalendars: false,
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                locale: {
+                    format: "DD-MM-YYYY HH:mm",
+                    showCustomRangeLabel: false,
+                    separator: " - ",
+                    applyLabel: "Valider",
+                    cancelLabel: "Annuler",
+                    fromLabel: "De",
+                    toLabel: "à",
+                    customRangeLabel: "Custom",
+                    daysOfWeek: [
+                        "Dim",
+                        "Lun",
+                        "Mar",
+                        "Mer",
+                        "Jeu",
+                        "Ven",
+                        "Sam"
+                    ],
+                    monthNames: [
+                        "Janvier",
+                        "Février",
+                        "Mars",
+                        "Avril",
+                        "Mai",
+                        "Juin",
+                        "Juillet",
+                        "Août",
+                        "Septembre",
+                        "Octobre",
+                        "Novembre",
+                        "Décembre"
+                    ],
+                    firstDay: 1
+                }
+            });
+            $('#'+startAtName).on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD-MM-YYYY HH:mm'));
+            });
+            $('#'+startAtName).on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+
+            $('#'+endAtName).daterangepicker({
+                autoUpdateInput: false,
+                linkedCalendars: false,
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                locale: {
+                    format: "DD-MM-YYYY HH:mm",
+                    showCustomRangeLabel: false,
+                    separator: " - ",
+                    applyLabel: "Valider",
+                    cancelLabel: "Annuler",
+                    fromLabel: "De",
+                    toLabel: "à",
+                    customRangeLabel: "Custom",
+                    daysOfWeek: [
+                        "Dim",
+                        "Lun",
+                        "Mar",
+                        "Mer",
+                        "Jeu",
+                        "Ven",
+                        "Sam"
+                    ],
+                    monthNames: [
+                        "Janvier",
+                        "Février",
+                        "Mars",
+                        "Avril",
+                        "Mai",
+                        "Juin",
+                        "Juillet",
+                        "Août",
+                        "Septembre",
+                        "Octobre",
+                        "Novembre",
+                        "Décembre"
+                    ],
+                    firstDay: 1
+                }
+            });
+            $('#'+endAtName).on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD-MM-YYYY HH:mm'));
+            });
+            $('#'+endAtName).on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+        });
+
+        function addDateFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette date</button>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                counter--;
+
+                $tagFormLi.remove();
+            });
+        }
+
+        $('.date-picker').daterangepicker({
+                autoUpdateInput: false,
+                linkedCalendars: false,
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                locale: {
+                    format: "DD-MM-YYYY HH:mm",
+                    showCustomRangeLabel: false,
+                    separator: " - ",
+                    applyLabel: "Valider",
+                    cancelLabel: "Annuler",
+                    fromLabel: "De",
+                    toLabel: "à",
+                    customRangeLabel: "Custom",
+                    daysOfWeek: [
+                        "Dim",
+                        "Lun",
+                        "Mar",
+                        "Mer",
+                        "Jeu",
+                        "Ven",
+                        "Sam"
+                    ],
+                    monthNames: [
+                        "Janvier",
+                        "Février",
+                        "Mars",
+                        "Avril",
+                        "Mai",
+                        "Juin",
+                        "Juillet",
+                        "Août",
+                        "Septembre",
+                        "Octobre",
+                        "Novembre",
+                        "Décembre"
+                    ],
+                    firstDay: 1
+                }
+            });
+            $('.date-picker').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD-MM-YYYY HH:mm'));
+            });
+            $('.date-picker').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+
+    });
+</script>
+{% endblock %}

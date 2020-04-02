@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Paiement sécurisé</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="row">
+                <div class="col-lg-8">
+                    {% for message in app.flashes('danger') %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <div class="box_cart">
+                        <div class="form_title">
+                            <h3><strong>5</strong>Paiement</h3>
+                        </div>
+                        <div class="step mt-3">
+                            {{ form_start(form, {attr: {id: form.vars.id}}) }}
+                                <h5>Par carte bancaire</h5>
+                                <div class="form-group">
+                                    <label for="card-element">
+                                        Renseignez votre carte bancaire
+                                    </label>
+                                    <div id="card-element" class="form-control"></div>
+                                    <div id="card-errors" class="help-block" role="alert"></div>
+                                </div>
+                                {{ form_widget(form.token) }}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn_1 full-width purchase">Payer</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('img/cards_all.svg') }}" alt="carte bancaire">
+                                    </div>
+                                </div>
+                            {{ form_end(form) }}
+                        </div>
+                        <hr>
+                        <div class="step mt-3">
+                            <h5>Ou par PayPal</h5>
+                            <div class="form-group mt-4">
+                                <a href="{{ path('front_gift_payment_paypal') }}"><img src="{{ asset('img/bouton-paypal.png') }}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="col-lg-4" id="sidebar">
+                    <div class="box_detail">
+                        <div id="total_cart">
+                            Total <span class="float-right">{{ gift.amount }}€</span>
+                        </div>
+                        <div class="cart_details">
+                            Validité :<span> Votre carte cadeau sera valable un an à partir d'aujourd'hui</span>
+                        </div>
+                        <div class="text-center"><small> </small></div>
+                    </div>
+                </aside>
+            </div>
+            <!--End step -->
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  var form = document.getElementById('{{ form.vars.id }}');
+  var errors = document.getElementById('card-errors');
+
+  var stripe = Stripe('pk_test_UQ4N6a1zEJnQ9mTXMFtwRokm00PpPtQCIr');
+  var elements = stripe.elements();
+  var card = elements.create('card');
+
+  card.mount('#card-element');
+  card.addEventListener('change', function(event) {
+    if (event.error) {
+      errors.textContent = event.error.message;
+      form.classList.add('has-error');
+    } else {
+      errors.textContent = '';
+      form.classList.remove('has-error');
+    }
+  });
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        errors.textContent = result.error.message;
+        form.classList.add('has-error');
+      } else {
+        document.getElementById('{{ form.children.token.vars.id }}').setAttribute('value', result.token.id);
+        form.submit();
+      }
+    });
+  });
+</script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container');
+  //This function displays Smart Payment Buttons on your web page.
+</script>
+{% endblock %}

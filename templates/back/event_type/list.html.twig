@@ -1,0 +1,124 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Types catégories{% endblock %}
+
+{% block style %}
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/toastr/toastr.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <h1>Catégories d'événement</h1>
+                </div>
+                <div class="col-sm-3">
+                    <a href="{{ path('admin_events_type_add') }}" class="btn btn-block btn-info" style="color:white;cursor:pointer;">Créer une catégorie</a>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des catégories</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th style="width: 30%">Nom</th>
+                            <th style="width: 30%">Icône</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for eventType in eventsType %}
+                            <tr>
+                                <td>{{ eventType.id }}</td>
+                                <td>{{ eventType.name }}</td>
+                                <td><img style="width:50px;height:50px" src="{{ asset( constant('App\\Services\\File\\UploadFile::ICON_UPLOAD_DIR')) ~ eventType.icon }}"></td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="{{ path('admin_events_type_edit', {'id': eventType.id}) }}">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Editer
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="{{ path('admin_events_type_remove', {'id': eventType.id}) }}" onclick="return confirm('Attention ! Supprimer ce type d\'événements supprimera les événements liés !');">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Supprimer
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<!-- Bootstrap 4 -->
+<script src="{{ asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('back/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('back/plugins/toastr/toastr.min.js') }}"></script>
+
+{% if app.request.get('action') == 'success' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'success',
+                title: ' Catégorie ajoutée avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% if app.request.get('action') == 'editsuccess' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'info',
+                title: ' Catégorie editée avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

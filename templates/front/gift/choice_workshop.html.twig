@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Atelier pour offrir : {{ event.title }}</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="pricing-container cd-has-margins">
+                <div class="form_title">
+                    <h3>Atelier à offrir : {{ event.title }}</h3>
+                    <p>Informations concernant l'atelier et la carte cadeau</p>
+                    <div class="row mt-4">
+                        <div class="col-md-4 p-1">
+                            <div style="width:100%;text-align:center"><img style="width:100px;height:100px" src="{{ asset('img/clock.svg') }}"></div>
+                            <p style="text-align: justify;font-size:1em;margin-top:15px;" class="p-2">Voici les prochaines dates disponibles pour cet atelier (La date pourra être choisie lors de l'activation de la carte cadeau) :</p>
+                            <ul class="mt-2 p-2 text-center">
+                                {% for date in event.workshopDates %}
+                                    {% if date(date.startAt) > date() %}
+                                        <li>le {{ date.startAt|date('d-m-Y à H:i') }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <div style="width:100%;text-align:center"><img style="width:100px;height:100px" src="{{ asset('img/chief.svg') }}"></div>
+                            <p style="text-align: justify;font-size:1em;margin-top:15px;" class="p-2">Le formateur qui animera les ateliers sera :</p>
+                            <ul class="mt-2 p-2 text-center">
+                                <li>{{ event.formatorName }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <div style="width:100%;text-align:center"><img style="width:100px;height:100px" src="{{ asset('img/gift-card.svg') }}"></div>
+                            <p style="text-align: justify;font-size:1em;margin-top:15px;" class="p-2">Une carte cadeau personnalisée avec votre message que vous recevrez par mail !</p>
+                            <ul class="mt-2 p-2 text-center">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cart-options clearfix mb-5">
+                        <div class="float-left fix_mobile">
+                            Le prix de l'atelier est de <strong>{{ event.price }}€</strong>.
+                        </div>
+                        <div class="float-right fix_mobile">
+                            <a href="{{ path('front_gift_connection') }}" class="btn_1 outline">Valider</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /pricing-container -->
+        </div>
+    </div>
+{% endblock %}

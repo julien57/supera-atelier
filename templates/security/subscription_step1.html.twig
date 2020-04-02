@@ -1,0 +1,414 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+{% endblock %}
+
+{% block body %}
+    <div class="hero_in cart_section" style="background-image:url({{ asset('img/fond-bois-antique.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper" style="background-color:rgba(0, 0, 0, 0.6)">
+            <div class="container">
+                <div class="bs-wizard clearfix">
+                    <div class="col-md-4 bs-wizard-step active">
+                        <div class="text-center bs-wizard-stepnum">Atelier</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-4 bs-wizard-step disabled">
+                        <div class="text-center bs-wizard-stepnum">Inscription</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-4 bs-wizard-step disabled">
+                        <div class="text-center bs-wizard-stepnum">Terminé !</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+                </div>
+                <!-- End bs-wizard -->
+            </div>
+        </div>
+    </div>
+    <!--/hero_in-->
+
+    <div class="bg_color_1">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="container margin_60_35">
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="box_cart">
+                        <div class="form_title">
+                            <h3><strong>1</strong>Atelier organisé</h3>
+                            <p>Tous les détails de l'atelier que vous organisez</p>
+                        </div>
+                        <div class="step">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.title) }}
+                                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                                        <small style="color:red">{{ form_errors(form.title) }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.formatorName) }}
+                                        {{ form_widget(form.formatorName, {'attr': {'class': 'form-control'}}) }}
+                                        <small style="color:red">{{ form_errors(form.formatorName) }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        {{ form_label(form.description) }}
+                                        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 5}}) }}
+                                        <small style="color:red">{{ form_errors(form.description) }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.eventType) }}
+                                        {{ form_widget(form.eventType, {'attr': {'class': 'form-control'}}) }}
+                                        <small style="color:red">{{ form_errors(form.eventType) }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.price) }}
+                                        {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                                        <small style="color:red">{{ form_errors(form.price) }}</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.nbMembers) }}
+                                        {{ form_widget(form.nbMembers, {'attr': {'class': 'form-control'}}) }}
+                                        <small style="color:red">{{ form_errors(form.nbMembers) }}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-5">
+                    <div class="box_detail booking mb-0 pb-0">
+                        <div class="price">
+                            <strong>Vous allez créer votre compte entreprise et votre page de présentation SuperAtelier.</strong>
+                        </div>
+                        <div class="price pb-0">
+                            <div class="row">
+                                <div class="col-md-3"><span class="ti-time" style="font-size:2em;color:rgb(143,60,0)"></span></div>
+                                <div class="col-md-9"><p>Publication gratuite de votre atelier sur SuperAtelier</p></div>
+                            </div>
+                        </div>
+                        <div class="price pb-0">
+                            <div class="row">
+                                <div class="col-md-3"><span class="ti-book" style="font-size:2em;color:rgb(143,60,0)"></span></div>
+                                <div class="col-md-9"><p>Accès gratuit à notre logiciel de gestion de réservations</p></div>
+                            </div>
+                        </div>
+                        <div class="price pb-0">
+                            <div class="row">
+                                <div class="col-md-3"><span class="ti-star" style="font-size:2em;color:rgb(143,60,0)"></span></div>
+                                <div class="col-md-9"><p>Une équipe d'experts pour une assistance personnalisée</p></div>
+                            </div>
+                        </div>
+                        <div class="price pb-0">
+                            <div class="row">
+                                <div class="col-md-3"><span class="ti-thumb-up" style="font-size:2em;color:rgb(143,60,0)"></span></div>
+                                <div class="col-md-9"><p>Facturation à l'utilisation :<br> Commisions basées sur le nombre de réservation honorées</p></div>
+                            </div>
+                        </div>
+                        <div class="price mb-0">
+                            <div class="row">
+                                <div class="col-md-3"><span class="ti-calendar" style="font-size:2em;color:rgb(143,60,0)"></span></div>
+                                <div class="col-md-9"><p>Aucune durée d'engagement minimum !</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /col -->
+            </div>
+            <hr>
+            <div class="form_title mb-3">
+                <h3><strong>+</strong>Dates de l'atelier</h3>
+                <p>Sélectionnez les dates</p>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class=" col-md-8">
+                        <div id="calendar-holder"></div>
+                    </div>
+                    <div class=" col-md-4">
+                        <h6 class="text-center mb-4">Date ajoutées</h6>
+                        <ul class="mt-4" id="list_dates">
+                            <li class="message-empty">Aucune date ajoutée pour le moment</li>
+                        </ul>
+                        <form method="post">
+                            <input type="submit" id="removedateSend" class="btn btn-danger" value="Supprimer mes dates">
+                        </form>
+                    </div>
+                </div>
+                <input type="hidden" name="token" value="{{ csrf_token('event_form__token') }}"/>
+            </div>
+            <hr>
+            <div class="form_title">
+                <h3><strong>+</strong>Ajouter des photos</h3>
+                <p>Ajoutez vos photos en rapport avec l'événement</p>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.photos) }}
+                <ul class="row" id="email-fields-list"
+                    data-prototype="{{ form_widget(form.photos.vars.prototype)|e }}"
+                    data-widget-tags="{{ '<li class="child-step col-md-4 mt-2"></li>'|e }}"
+                    data-widget-counter="{{ form.photos|length }}">
+                    {% for photo in form.photos %}
+                        <li class="child-step col-md-4 mt-2">
+                            <h4 class="col-md-12" style="background-color:#009973;color:white;text-align:center;border-radius:5px"><span style="text-align:center">Photo {{ loop.index }}</span></h4>
+                            <div class="col-md-12"><img style="max-height: 150px" src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ photo.url.vars.data }}"></div>
+                            {{ form_widget(photo) }}
+                            <button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette photo</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button"
+                        class="add-another-collection-widget btn btn-success"
+                        data-list-selector="#email-fields-list">Ajouter une photo</button>
+            </div>
+            <!--End step -->
+            <div class="cart-options clearfix">
+                <div class="float-right fix_mobile">
+                    <button type="submit" class="btn_1 outline">Etape suivante</button>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        {{ form_end(form) }}
+        <!-- /container -->
+    </div>
+
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+        <div class="small-dialog-header">
+            <h3>Dates de l'atelier</h3>
+        </div>
+        <p>Vous avez choisi la date du <span id="dateSelected" class="font-weight-bold"></span>.<br>
+        Sélectionnez les horaires :</p>
+        <!--form -->
+        <div id="form_submitted"></div>
+        <form method="post" class="formtodates">
+
+        </form>
+    </div>
+
+    <!-- /bg_color_1 -->
+    <a href="#sign-in-dialog" id="datesCalendar"></a>
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+
+	<script>
+    jQuery(document).ready(function () {
+
+        $collectionHolder = $('ul.tags');
+
+        // add a delete link to all of the existing tag form li elements
+        $collectionHolder.find('li').each(function() {
+            addTagFormDeleteLink($(this));
+        });
+
+        jQuery('.add-another-collection-widget').click(function (e) {
+            var list = jQuery(jQuery(this).attr('data-list-selector'));
+
+            // Try to find the counter of the list or use the length of the list
+            counter = list.data('widget-counter') || list.children().length;
+
+            // grab the prototype template
+            var newWidget = list.attr('data-prototype');
+            counter++;
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = `<div id="event_form_photos_${counter}"><div><input type="file" id="event_form_photos_${counter}_url" name="event_form[photos][${counter}][url]" required="required" /></div></div>`;
+            // Increase the counter
+
+            // And store it, the length cannot be used if deleting widgets is allowed
+            list.data('widget-counter', counter);
+
+            // create a new list element and add it to the list
+            var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+            addTagFormDeleteLink(newElem);
+            var stepNb = `<h4 class="col-md-12" style="background-color:#009973;color:white;text-align:center;border-radius:5px"><span style="text-align:center">Photo ${counter}</span></h4><img style="width:100%;height:180px;background:rgba(34,139,34,0.2);" id="previewPhoto${counter}">`;
+            newElem.prepend(stepNb);
+
+            newElem.appendTo(list);
+
+            document.getElementById(`event_form_photos_${counter}_url`).onchange = function () {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById(`previewPhoto${counter}`).src = e.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            };
+        });
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette photo</button>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                counter--;
+
+                $tagFormLi.remove();
+            });
+        }
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    var calendarEl = document.getElementById('calendar-holder');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        defaultView: 'dayGridMonth',
+        selectable: true,
+        selectHelper: true,
+        locales: 'frLocale',
+        buttonText: {
+        today: 'Aujourd\'hui',
+            month: 'mois',
+            week: 'semaine',
+            day: 'jour'
+        },
+        locale: 'fr',
+        editable: true,
+        select: function(start, end, allDay) {
+            $('form.formtodates').empty();
+            $('form.formtodates').append('<div class="row">\n'+
+'                <div class="col-sm-6">\n'+
+'                    <div class="form-group text-center">\n'+
+'                        <label for="start">De</label>\n'+
+'                        <input type="time" id="start" name="start" min="06:00" max="22:00" class="form-control" required>\n'+
+'                        <small>Format <strong>hh:mm</strong></small>\n'+
+'                    </div>\n'+
+'                </div>\n'+
+'                <div class="col-sm-6">\n'+
+'                    <div class="form-group text-center">\n'+
+'                        <label for="end">à</label>\n'+
+'                        <input type="time" id="end" name="end" min="06:00" max="22:00" class="form-control" required>\n'+
+'                        <small>Format <strong>hh:mm</strong></small>\n'+
+'                    </div>\n'+
+'                </div>\n'+
+'            </div>\n'+
+'            <button type="submit" class="btn btn-success" id="validDate">Valider</button>\n'+
+'            <input type="hidden" id="dateToSelect" name="datetoselect" value="" required>');
+            $('#form_submitted').text('');
+
+            $('#datesCalendar').click();
+
+            var dateToDisplay = start.start.toLocaleDateString();
+
+            $('#dateSelected').text(dateToDisplay);
+            $('#dateToSelect').val(start.startStr);
+
+            $('#validDate').on('click', function(e) {
+
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('front_subscription_add_dates') }}",
+                    data: $('form.formtodates').serialize(),
+                    success: function(response) {
+
+                        if (response.message === 'ok') {
+                            $('form.formtodates').empty();
+                            $('#form_submitted').text(`De ${response.hourStart} à ${response.hourEnd}.`);
+
+                            $.each(response, function(i) {
+
+                                $('.fc-day[data-date="'+response.dateSelected+'"]').css('background', 'yellowgreen');
+                            });
+                            $('.message-empty').remove();
+
+                            $('#list_dates').append(`<li class="mt-3">${response.dateSelected} de ${response.hourStart} à ${response.hourEnd}</li>`)
+
+                        }
+                    },
+                    error: function() {
+                        alert('Error');
+
+                    }
+                });
+                return false;
+            });
+        },
+        eventSources: [
+            {
+                url: "/fc-load-events",
+                method: "POST",
+                extraParams: {
+                    filters: JSON.stringify({})
+                },
+                failure: () => {
+                    // alert("There was an error while fetching FullCalendar!");
+                },
+            },
+        ],
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay',
+        },
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+        timeZone: 'UTC',
+    });
+    calendar.setOption('locale', 'fr');
+    calendar.render();
+});
+</script>
+<script>
+    $('#removedateSend').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "{{ path('front_subscription_remove_dates') }}",
+        data: $('form.formtodates').serialize(),
+        success: function(response) {
+
+            $('#list_dates li').remove();
+            $('.fc-day').css('background', 'white');
+        },
+        error: function() {
+            alert('Error');
+
+        }
+    });
+    return false;
+});
+
+
+</script>
+{% endblock %}

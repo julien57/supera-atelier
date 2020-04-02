@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil - Mon espace{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - Profil</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="m-auto margin_80_55 col-md-6">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <h4>Informations sur votre profil</h4>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {{ form_label(form.firstName) }}
+                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.firstName) }}</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {{ form_label(form.lastName) }}
+                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.lastName) }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.email) }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.phone) }}</small>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    {{ form_label(form.website) }}
+                    {{ form_widget(form.website, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.website) }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="form-group">
+                    {{ form_label(form.adress) }}
+                    {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.adress) }}</small>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    {{ form_label(form.zipCode) }}
+                    {{ form_widget(form.zipCode, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.zipCode) }}</small>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    {{ form_label(form.city) }}
+                    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                    <small style="color:red">{{ form_errors(form.city) }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="cart-options clearfix">
+            <div class="float-left fix_mobile">
+                <a type="submit" href="{{ path('front_space_home') }}" class="btn btn-secondary">Retour</a>
+            </div>
+            <div class="float-right fix_mobile">
+                <button type="submit" class="btn_1 outline">Enregistrer</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <!--/row-->
+{% endblock %}

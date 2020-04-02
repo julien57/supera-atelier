@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Mon espace{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - Accueil</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+        <div class="main_title_2">
+            <span><em></em></span>
+            <h2>{% if app.user.isEnterprise %}Mon compte entreprise{% else %}Mon compte client{% endif %}</h2>
+            <p>Accueil</p>
+        </div>
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <a class="box_feat" href="{{ path('front_space_profil') }}">
+                    <i class="pe-7s-user"></i>
+                    <h3>Mon Profil</h3>
+                    <p>Modifiez les informations concernant votre profil.</p>
+                </a>
+            </div>
+            {% if app.user.isEnterprise %}
+                <div class="col-lg-4 col-md-6">
+                    <a class="box_feat" href="{{ path('front_space_workshop_enterprise') }}">
+                        <i class="pe-7s-tools"></i>
+                        <h3>Mes Ateliers</h3>
+                        <p>Gérez vos ateliers facilement ici.</p>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col-lg-4 col-md-6">
+                    <a class="box_feat" href="{{ path('front_space_workshop_reserved') }}">
+                        <i class="pe-7s-tools"></i>
+                        <h3>Ateliers Réservés</h3>
+                        <p>Vous participez à un atelier ? les informations concernant votre réservation se trouvent ici.</p>
+                    </a>
+                </div>
+            {% endif %}
+            {% if gift and gift.event is not null %}
+            <div class="col-lg-4 col-md-6">
+                <a class="box_feat" href="{{ path('front_event_single', {'id': gift.event.id, 'category': gift.event.eventType.slug, 'slug': gift.event.slug}) }}">
+                    <i class="pe-7s-gift"></i>
+                    <h3>Carte cadeau à utiliser</h3>
+                    <p>Vous avez un bon cadeau à utiliser pour l'atelier <em>{{ gift.event.title }}</em>, cliquez ici pour voir la page de l'atelier</p>
+                </a>
+            </div>
+            {% elseif gift and gift.event is null and user.moneyGift > 0 %}
+            <div class="col-lg-4 col-md-6">
+                <a class="box_feat" href="{{ path('front_search_event') }}">
+                    <i class="pe-7s-gift"></i>
+                    <h3>Bon cadeau à utiliser</h3>
+                    <p>Vous avez un bon cadeau d'un montant de <em>{{ user.moneyGift }}€</em> à utiliser pour tous les ateliers du site.</p>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        <!--/row-->
+{% endblock %}

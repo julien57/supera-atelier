@@ -1,0 +1,33 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER, ROLE_ENTERPRISE]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ENTERPRISE, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        main:
+            entity: { class: App\Entity\User, property: mail }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            provider: main
+            pattern: ^/
+            logout:
+                path: /logout
+                target: /
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+         - { path: ^/mon-espace, roles: [ROLE_USER, ROLE_ENTERPRISE] }
+         - { path: ^/admin, roles: ROLE_ADMIN }

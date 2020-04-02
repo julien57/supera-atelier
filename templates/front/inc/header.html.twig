@@ -1,0 +1,40 @@
+<header class="header menu_fixed">
+    <div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
+    <div id="logo">
+        <a href="{{ path('front_home_index') }}">
+            <h1 data-retina="true" class="logo_normal" style="color:yellowgreen">LOGO</h1>
+            <h1 data-retina="true" class="logo_sticky" style="color:yellowgreen">LOGO</h1>
+        </a>
+    </div>
+    <!-- /top_menu -->
+    <a href="#menu" class="btn_mobile">
+        <div class="hamburger hamburger--spin" id="hamburger">
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
+        </div>
+    </a>
+    <nav id="menu" class="main-menu">
+        <ul>
+            <li><span><a class="font-weight-bold" href="{{ path('front_home_index') }}">Accueil</a></span></li>
+            {% if (app.user and app.user.isEnterprise == true) or is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+                <li style="margin-top:-5px"><span><a class="btn_1 rounded pt-2 pb-2 font-weight-bold" href="{{ path('event_security_subscription_step1') }}" style="background:#126600;color:white!important;">Déposez votre atelier</a></span></li>
+            {% endif %}
+            {% if app.user %}
+                <li><span><a class="font-weight-bold" href="{{ path('front_gift_choice_gift') }}">Offrir un atelier</a></span></li>
+            {% else %}
+                <li><span><a class="font-weight-bold" href="{{ path('front_gift_connection') }}">Offrir un atelier</a></span></li>
+            {% endif %}
+            {% if app.user %}
+                <li><span><a class="font-weight-bold" href="{{ path('front_space_home') }}">Mon espace</a></span></li>
+                <li><span><a class="font-weight-bold" href="{{ path('app_logout') }}">Déconnexion</a></span></li>
+            {% else %}
+                <li><span><a class="font-weight-bold" href="{{ path('front_client_subscription') }}">Inscription</a></span></li>
+                <li><span><a class="font-weight-bold" href="{{ path('app_front_login') }}">Connexion</a></span></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% if app.request.query.get('inscription') == 'succes' %}
+        <a href="#sign-in-dialog" id="sign-in"></a>
+    {% endif %}
+</header>

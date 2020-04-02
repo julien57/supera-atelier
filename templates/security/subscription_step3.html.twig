@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="hero_in cart_section">
+        <div class="wrapper">
+            <div class="container">
+                <div class="bs-wizard clearfix">
+                    <div class="col-md-3 bs-wizard-step">
+                        <div class="text-center bs-wizard-stepnum">Atelier</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-3 bs-wizard-step">
+                        <div class="text-center bs-wizard-stepnum">Inscription</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-3 bs-wizard-step active">
+                        <div class="text-center bs-wizard-stepnum">Paiement</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-3 bs-wizard-step disabled">
+                        <div class="text-center bs-wizard-stepnum">Terminé !</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+                </div>
+                <!-- End bs-wizard -->
+            </div>
+        </div>
+    </div>
+    <!--/hero_in-->
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="row">
+                <div class="col-lg-8">
+                    {% for message in app.flashes('danger') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <div class="box_cart">
+                        <div class="form_title">
+                            <h3><strong>3</strong>Paiement</h3>
+                        </div>
+                        <div class="step mt-3">
+                            {{ form_start(form, {attr: {id: form.vars.id}}) }}
+                            <h5>Par carte bancaire</h5>
+                            <div class="form-group">
+                                <label for="card-element">
+                                    Renseignez votre carte bancaire
+                                </label>
+                                <div id="card-element" class="form-control"></div>
+                                <div id="card-errors" class="help-block" role="alert"></div>
+                            </div>
+                            {{ form_widget(form.token) }}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn_1 full-width purchase">Payer</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="{{ asset('img/cards_all.svg') }}" alt="carte bancaire">
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                            <hr>
+                        <div class="step mt-3">
+                            <h5>Ou par PayPal</h5>
+                            <div class="form-group">
+                                <div id="paypal-button-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="col-lg-4" id="sidebar">
+                    <div class="box_detail">
+                        <div id="total_cart">
+                            Total <span class="float-right">{{ event.price }}€</span>
+                        </div>
+                        <ul class="cart_details">
+                            <li>Le <span>{{ event.startAt|date('d/m/Y') }}</span></li>
+                            <li>De <span>{{ event.startAt|date('H:i') }}h</span></li>
+                            <li>A <span>{{ event.endAt|date('H:i') }}h</span></li>
+                            <li>Nb personnes max <span>{{ event.nbMembers }}</span></li>
+                        </ul>
+                        <div class="text-center"><small> </small></div>
+                    </div>
+                </aside>
+            </div>
+            <!--End step -->
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bg_color_1 -->
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  var form = document.getElementById('{{ form.vars.id }}');
+  var errors = document.getElementById('card-errors');
+
+  var stripe = Stripe('pk_test_UQ4N6a1zEJnQ9mTXMFtwRokm00PpPtQCIr');
+  var elements = stripe.elements();
+  var card = elements.create('card');
+
+  card.mount('#card-element');
+  card.addEventListener('change', function(event) {
+    if (event.error) {
+      errors.textContent = event.error.message;
+      form.classList.add('has-error');
+    } else {
+      errors.textContent = '';
+      form.classList.remove('has-error');
+    }
+  });
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        errors.textContent = result.error.message;
+        form.classList.add('has-error');
+      } else {
+        document.getElementById('{{ form.children.token.vars.id }}').setAttribute('value', result.token.id);
+        form.submit();
+      }
+    });
+  });
+</script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '0.01'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container');
+  //This function displays Smart Payment Buttons on your web page.
+</script>
+{% endblock %}

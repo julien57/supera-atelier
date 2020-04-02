@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Paiement de la réservation</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="row">
+                <div class="col-lg-8">
+                    {% for message in app.flashes('danger') %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% if priceEvent != 0 or priceEvent is null %}
+                        <div class="box_cart">
+                            <div class="form_title">
+                                <h3>Paiement par PayPal</h3>
+                            </div>
+                            <div class="step mt-3">
+                                <div class="form-group">
+                                    <div id="paypal-button-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="box_cart">
+                            <div class="form_title">
+                                <h3>Réservation</h3>
+                                <p>Vous souhaitez réserver sans payer, en utilisant votre carte cadeau ? il suffit de cliquer sur le bouton ci-dessous.<br>
+                                    Le tarif de l'atelier sera ensuite déduit de votre carte.</p>
+                            </div>
+                            <div class="step mt-3">
+                                <div class="cart-options clearfix">
+                                    <div class="float-right fix_mobile">
+                                        <a href="{{ path('front_reservation_without_payment') }}" class="btn_1 outline">Valider la réservation</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <aside class="col-lg-4" id="sidebar">
+                    <div class="box_detail">
+                        <div id="total_cart">
+                            Total <span class="float-right">{% if priceEvent is not null %}<span style="text-decoration:line-through;">{{ workshopDate.event.price|number_format(2, '.') }}€</span>{% else %}{{ workshopDate.event.price|number_format(2, '.') }}€{% endif %}</span>
+                        </div>
+                        {% if priceEvent is not null %}
+                            <div id="total_cart">
+                                <span style="font-size:0.6em">Avec votre carte cadeau :</span> <span class="float-right">{{ priceEvent|number_format(2, '.') }}€</span>
+                            </div>
+                        {% endif %}
+                        <ul class="cart_details">
+                            <li>Le <span>{{ workshopDate.startAt|date('d/m/Y') }}</span></li>
+                            <li>De <span>{{ workshopDate.startAt|date('H:i') }}h</span></li>
+                            <li>A <span>{{ workshopDate.endAt|date('H:i') }}h</span></li>
+                            <li>Nb personnes max <span>{{ workshopDate.event.nbMembers }}</span></li>
+                        </ul>
+                        <div class="text-center"><small> </small></div>
+                    </div>
+                </aside>
+            </div>
+            <!--End step -->
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bg_color_1 -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://www.paypal.com/sdk/js?client-id=AWT-eBNHE8g81kkQ3N2UeN1cqeNRwXRnQNP06kZPNn8p5s93PBzteTm4NKwPPQTZy5sVE11n2ExaDKIg&currency=EUR"></script>
+<script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: "{{ workshopDate.event.price|number_format(2, '.') }}"
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+
+          if (details.status === "COMPLETED") {
+              $.ajax({
+                    type: "POST",
+                    url: "{{ path('front_reservation_payment_paypal') }}",
+                    data: details,
+                    success: function(response) {
+                            console.log(response);
+                        if (response.response === 'statusOK') {
+                            document.location.href="http://127.0.0.1:8000/reservation/reservation/succes";
+                        }
+                    },
+                    error: function() {
+                        alert('Error');
+
+                    }
+                });
+          }
+
+      });
+    }
+  }).render('#paypal-button-container');
+
+</script>
+{% endblock %}

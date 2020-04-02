@@ -1,0 +1,28 @@
+<form method="post" action="{{ path('front_search_event') }}">
+    <div class="row no-gutters custom-search-input-2">
+        <div class="col-lg-3">
+            <select class="wide" style="display: none;" name="category">
+                <option value="">Catégorie</option>
+                {% for category in menu_categories.allCategories %}
+                    <option value="{{ category.slug }}" {% if app.session.get('searchCategory') == category.slug %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input class="form-control" type="text" name="city" placeholder="Ville" autocomplete="off" value="{{ app.session.get('searchCity') }}">
+                <i class="icon_building"></i>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input class="form-control" type="text" name="date" placeholder="Quand ?"autocomplete="off" {% if app.session.get('searchDate') %}value="{{ app.session.get('searchDate')|date('d-m-Y') }}"{% endif %}>
+                <i class="icon_calendar"></i>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <input type="submit" class="btn_search" value="Rechercher">
+        </div>
+    </div>
+    <!-- /row -->
+</form>

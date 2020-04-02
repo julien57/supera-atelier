@@ -1,0 +1,102 @@
+
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+        <meta name="author" content="Ansonika">
+        <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+
+        <!-- Favicons-->
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+        <link rel="apple-touch-icon" type="image/x-icon" href="{{ asset('img/apple-touch-icon-57x57-precomposed.png') }}">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ asset('img/apple-touch-icon-72x72-precomposed.png') }}">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('img/apple-touch-icon-114x114-precomposed.png') }}">
+        <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('img/apple-touch-icon-144x144-precomposed.png') }}">
+
+        <!-- GOOGLE WEB FONT -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+
+        <!-- BASE CSS -->
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/vendors.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('back/plugins/fontawesome-free/css/all.min.css') }}">
+        <!-- YOUR CUSTOM CSS -->
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
+    </head>
+
+    <body id="login_bg" style="background-image:url({{ asset('img/kids-cooking-header.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+
+    <nav id="menu" class="fake_menu"></nav>
+
+    <div id="preloader">
+        <div data-loader="circle-side"></div>
+    </div>
+    <!-- End Preload -->
+
+    <div id="login">
+        <aside class="pr-4 pl-4">
+            <figure>
+                <a href="index.html">LOGO</a>
+            </figure>
+            <p><small>Attention ! Si vous êtes une entreprise, veuillez <a href="{{ path('event_security_subscription_step1') }}">vous inscrire ici</a>.</small></p>
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_label(form.firstName) }}
+                        {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.firstName) }}</small>
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_label(form.lastName) }}
+                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.lastName) }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                <small style="color:red">{{ form_errors(form.email) }}</small>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.password.first) }}
+                {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.password.second) }}
+                {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
+                <small style="color:red">{{ form_errors(form.password.first) }}</small>
+                <small style="color:red">{{ form_errors(form.password.second) }}</small>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <div class="cart-options clearfix">
+                <div class="float-right fix_mobile">
+                    <button type="submit" class="btn_1 outline">S'inscrire</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+            <div class="copy">© {{ 'now'|date('Y') }} SuperAtelier</div>
+        </aside>
+    </div>
+    <!-- /login -->
+
+    <!-- COMMON SCRIPTS -->
+    <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('js/common_scripts.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('assets/validate.js') }}"></script>
+
+    </body>
+    </html>
+{% endblock %}

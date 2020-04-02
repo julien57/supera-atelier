@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Choix du montant</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="pricing-container cd-has-margins">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="form_title">
+                    <h3><strong>3</strong>Choix du montant</h3>
+                </div>
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-danger mt-4 col-md-6">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <h4 class="mt-5">Sélectionnez un montant défini</h4>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.amount) }}
+                            {{ form_widget(form.amount, {'attr': {'class': 'form-control'}}) }}
+                            <small style="color:red">{{ form_errors(form.amount) }}</small>
+                        </div>
+                    </div>
+                </div>
+                <h2>Ou</h2>
+                <hr>
+                <h4>Choisissez votre montant</h4>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.choiceAmount) }}
+                            {{ form_widget(form.choiceAmount, {'attr': {'class': 'form-control'}}) }}
+                            <small style="color:red">{{ form_errors(form.choiceAmount) }}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-options clearfix">
+                    <div class="float-right fix_mobile">
+                        <button type="submit" class="btn_1 outline">Suivant</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <!-- /pricing-container -->
+        </div>
+    </div>
+{% endblock %}

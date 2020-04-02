@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ateliers réservés - Mon espace{% endblock %}
+
+{% block style %}
+    <link href="{{ asset('css/blog.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - Ateliers réservés</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="container margin_60_35">
+        <div class="wrapper-grid">
+            <h4>Mes ateliés réservés</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    {% for reservation in reservations %}
+                    <article class="blog wow fadeIn border-bottom" style="visibility: visible; animation-name: fadeIn;">
+                        <div class="row no-gutters">
+                            <div class="col-lg-7">
+                                <figure>
+                                    <a href="{{ path('front_event_single', {'id': reservation.workshopDate.event.id, 'category': reservation.workshopDate.event.eventType.slug, 'slug': reservation.workshopDate.event.slug}) }}"><img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ reservation.workshopDate.event.firstPhoto.url }}" style="{% if date(reservation.workshopDate.startAt) < date() %}opacity:0.4{% endif %}" alt="">
+                                        <div class="preview"><span>Voir l'atelier</span></div>
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="post_info">
+                                    <small>
+                                        {% if date(reservation.workshopDate.startAt) < date() %}
+                                                L'atelier a eu lieu  {{ reservation.workshopDate.startAt|format_datetime('full', 'none', locale='fr') }} de {{ reservation.workshopDate.startAt|date('H:i') }} à {{ reservation.workshopDate.endAt|date('H:i') }}
+                                            {% else %}
+                                                L'atelier aura lieu {{ reservation.workshopDate.startAt|format_datetime('full', 'none', locale='fr') }} de {{ reservation.workshopDate.startAt|date('H:i') }} à {{ reservation.workshopDate.endAt|date('H:i') }}
+                                        {% endif %}
+                                    </small>
+                                    <h3><a href="{{ path('front_event_single', {'id': reservation.workshopDate.event.id, 'category': reservation.workshopDate.event.eventType.slug, 'slug': reservation.workshopDate.event.slug}) }}">{{ reservation.workshopDate.event.title }}</a></h3>
+                                    {% if date(reservation.workshopDate.startAt) < date() %}
+                                        <p><p class="text-center"><a href="{{ path('front_event_single', {'id': reservation.workshopDate.event.id, 'category': reservation.workshopDate.event.eventType.slug, 'slug': reservation.workshopDate.event.slug}) }}#reviews" class="btn_1 rounded add_top_30" style="background: #5f3f3f">Je note l'atelier !</a></p></p>
+                                    {% else %}
+                                        <p>{{ reservation.workshopDate.event.description|slice(0, 150) ~ '...' }}</p>
+                                    {% endif %}
+                                    <ul style="background:rgba(143,60,0,0.1);bottom:0;" class="pb-3">
+                                        <li>
+                                            <div class="thumb mt-1" style="text-align:center"><i class="icon-user" style="font-size:2em;"></i></div>Formateur : {{ reservation.workshopDate.event.formatorName }}
+                                        </li>
+                                        <li><a target="_blank" href="{{ path('front_space_workshop_facture', {'id': reservation.id}) }}" style="color:rgb(143,60,0)">Télécharger la facture</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                        {% else %}
+                        <p>Aucun atelier réservé pour le moment. <a href="{{ path('front_search_event') }}">Voir tous les ateliers disponibles ?</a></p>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+    </div>
+    <!--/row-->
+{% endblock %}

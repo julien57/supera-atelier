@@ -1,0 +1,126 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="container margin_60_35">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box_cart">
+                <div class="form_title">
+                </div>
+                <div class="step">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.title) }}
+                                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.title) }}</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.formatorName) }}
+                                {{ form_widget(form.formatorName, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.formatorName) }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                {{ form_label(form.description) }}
+                                {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': 5}}) }}
+                                <small style="color:red">{{ form_errors(form.description) }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.eventType) }}
+                                {{ form_widget(form.eventType, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.eventType) }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                {{ form_label(form.price) }} en €
+                                {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.price) }}</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                {{ form_label(form.nbMembers) }}
+                                {{ form_widget(form.nbMembers, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.nbMembers) }}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /col -->
+    </div>
+    <hr>
+    <div class="form_title mb-3">
+        <h3>Dates de l'atelier</h3>
+        <p>Sélectionnez les dates</p>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class=" col-md-8">
+                <div id="calendar-holder"></div>
+            </div>
+            <div class=" col-md-4">
+                <h6 class="text-center mb-4">Date ajoutées</h6>
+                <ul class="mt-4" id="list_dates">
+                    {% if workshopDates is defined %}
+                        {% for date in  workshopDates %}
+                            <li>{{ date.startAt|date('d/m/Y à H:i') }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="message-empty">Aucune date ajoutée pour le moment</li>
+                    {% endif %}
+                </ul>
+                <form method="post">
+                    <input type="submit" id="removedateSend" class="btn btn-danger" value="Supprimer mes dates">
+                </form>
+            </div>
+        </div>
+        <input type="hidden" name="token" value="{{ csrf_token('event_form__token') }}"/>
+    </div>
+    <hr>
+    <div class="form_title">
+        <h3>Ajouter des photos</h3>
+        <p>Ajoutez vos photos en rapport avec l'événement</p>
+    </div>
+    <div class="form-group">
+        {{ form_label(form.photos) }}
+        <ul class="row" id="email-fields-list"
+            data-prototype="{{ form_widget(form.photos.vars.prototype)|e }}"
+            data-widget-tags="{{ '<li class="child-step col-md-4 mt-2"></li>'|e }}"
+            data-widget-counter="{{ form.photos|length }}">
+            {% for photo in form.photos %}
+                <li class="child-step col-md-4 mt-2">
+                    <h4 class="col-md-12" style="background-color:#009973;color:white;text-align:center;border-radius:5px"><span style="text-align:center">Photo {{ loop.index }}</span></h4>
+                    <div class="col-md-12"><img style="max-height: 150px" src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ photo.url.vars.data }}"></div>
+                    {{ form_widget(photo) }}
+                    <button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette photo</button>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="button"
+                class="add-another-collection-widget btn btn-success"
+                data-list-selector="#email-fields-list">Ajouter une photo</button>
+    </div>
+    <!--End step -->
+    <div class="cart-options clearfix">
+        <div class="float-right fix_mobile">
+            <button type="submit" class="btn btn-success">Ajouter l'atelier</button>
+        </div>
+    </div>
+    <!-- /row -->
+</div>
+{{ form_end(form) }}

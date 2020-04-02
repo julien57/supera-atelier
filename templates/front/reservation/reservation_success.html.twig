@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Vos informations de réservation</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+        <h4 class="mb-3">Atelier réservé !</h4>
+        <p><strong>Bravo !</strong> Vous venez de reserver votre atelier et nous vous en remercions. Une facture est maintenant disponible dans votre espace personnel.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Adresse de l'atelier :</h6>
+                <ul>
+                    <li>{{ workshopDate.event.user.adress }}</li>
+                    <li>{{ workshopDate.event.user.zipCode }}, {{ workshopDate.event.user.city }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h6>Date et heures</h6>
+                <ul>
+                    <li>L'atelier se déroulera le <em>{{ workshopDate.startAt|format_datetime('full', 'none', locale='fr') }} de {{ workshopDate.startAt|date('H:i') }} à {{ workshopDate.endAt|date('H:i') }}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!--/container-->
+
+{% endblock %}

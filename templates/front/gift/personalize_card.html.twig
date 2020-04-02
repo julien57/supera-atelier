@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Personnalisation de la carte</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="box_cart">
+                <div class="form_title">
+                    <h3><strong>4</strong>Personnalisez la carte cadeau</h3>
+                </div>
+                <div class="step">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    <div class="row mt-4">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.forName) }}
+                                {{ form_widget(form.forName, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.forName) }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.ofName) }}
+                                {{ form_widget(form.ofName, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.ofName) }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.message) }}
+                                {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.message) }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-options clearfix">
+                        <div class="float-right fix_mobile">
+                            <button type="submit" class="btn_1 outline">Suivant</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <!-- /pricing-container -->
+        </div>
+    </div>
+{% endblock %}

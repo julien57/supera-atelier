@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes ateliers - Mon espace{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - Participants à l'atelier {{ workdate.event.title }}</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <h4>Participants à l'atelier {{ workdate.event.title }} du {{ workdate.startAt|date('d/m/Y') }}</h4>
+        <table class="table col-md-6">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Nom Prénom</th>
+                <th scope="col">Date de réservation</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for participant in participants %}
+                <tr>
+                    <td>{{ participant.user.firstName }} {{ participant.user.lastName }}</td>
+                    <td>{{ participant.reservedAt|date('d/m/Y') }}</td>
+                </tr>
+            {% else %}
+                <tr><td>Aucune réservation pour le moment.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        <div class="cart-options clearfix">
+            <div class="float-left fix_mobile">
+                <a type="submit" href="{{ path('front_space_home') }}" class="btn btn-secondary">Retour</a>
+            </div>
+        </div>
+    <!--/row-->
+{% endblock %}

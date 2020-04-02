@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="hero_in cart_section last" style="background-image:url({{ asset('img/fond-bois-antique.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper" style="background-color:rgba(0, 0, 0, 0.6)">
+            <div class="container">
+                <div class="bs-wizard clearfix">
+                    <div class="col-md-4 bs-wizard-step">
+                        <div class="text-center bs-wizard-stepnum">Atelier</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-4 bs-wizard-step">
+                        <div class="text-center bs-wizard-stepnum">Inscription</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+
+                    <div class="col-md-4 bs-wizard-step active">
+                        <div class="text-center bs-wizard-stepnum">Terminé !</div>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <a href="#0" class="bs-wizard-dot"></a>
+                    </div>
+                </div>
+                <!-- End bs-wizard -->
+                <div id="confirm">
+                    <h4>Soumission de l'atelier !</h4>
+                    <p>Votre atelier à bien été ajouté, vous allez recevoir un mail de confirmation à l'adresse <strong>{{ user.email }}</strong> dans quelques instants.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/hero_in-->
+{% endblock %}

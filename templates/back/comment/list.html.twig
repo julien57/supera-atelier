@@ -1,0 +1,118 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Notes et avis{% endblock %}
+
+{% block style %}
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/toastr/toastr.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <h1>Notes et avis</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des notes et avis</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th>Utilisateur</th>
+                            <th>Atelier</th>
+                            <th>Note</th>
+                            <th>Avis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for comment in comments %}
+                            <tr>
+                                <td>{{ comment.id }}</td>
+                                <td>{{ comment.user.firstName }} {{ comment.user.lastName }} ({{ comment.user.email }})</td>
+                                <td>{{ comment.event.title }}</td>
+                                <td>{{ comment.noteUser }}</td>
+                                <td>{{ comment.content }}</td>
+                            </tr>
+                        {% else %}
+                            <tr><td>Aucun avis ou note laissé pour le moment</td></tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <p class="text-center"><div class="navigation">
+                    {{ knp_pagination_render(comments) }}
+                </div></p>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<!-- Bootstrap 4 -->
+<script src="{{ asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('back/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('back/plugins/toastr/toastr.min.js') }}"></script>
+
+{% if app.request.get('action') == 'success' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'success',
+                title: ' Catégorie ajoutée avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% if app.request.get('action') == 'editsuccess' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'info',
+                title: ' Catégorie editée avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

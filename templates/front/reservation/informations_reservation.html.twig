@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+         <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+            <div class="wrapper">
+                <div class="container">
+                    <h1 class="fadeInUp animated"><span></span>Vos informations de réservation</h1>
+                </div>
+            </div>
+        </section>
+        <!--/hero_in-->
+
+        <div class="container margin_80_55">
+            <h4 class="mb-3">Atelier en cours de réservation : </h4>
+            <p><strong>{{ workshopDate.event.title }}</strong> se déroulant le <em>{{ workshopDate.startAt|format_datetime('full', 'none', locale='fr') }} de {{ workshopDate.startAt|date('H:i') }} à {{ workshopDate.endAt|date('H:i') }}</em>.</p>
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ form_label(form.firstName) }}
+                        {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.firstName) }}</small>
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_label(form.lastName) }}
+                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.lastName) }}</small>
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.email) }}</small>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        {{ form_label(form.adress) }}
+                        {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.adress) }}</small>
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_label(form.zipCode) }}
+                        {{ form_widget(form.zipCode, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.zipCode) }}</small>
+                    </div>
+                    <div class="col-md-4">
+                        {{ form_label(form.city) }}
+                        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                        <small style="color:red">{{ form_errors(form.city) }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-options clearfix">
+                <div class="float-right fix_mobile">
+                    <button type="submit" class="btn_1 outline">Valider mes informations</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+        <!--/container-->
+
+{% endblock %}

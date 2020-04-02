@@ -1,0 +1,122 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Types catégories{% endblock %}
+
+{% block style %}
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/toastr/toastr.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <h1>Cartes cadeaux</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Liste des cartes cadeaux</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th style="width: 30%">Code</th>
+                            <th style="width: 30%">Type</th>
+                            <th style="width: 30%">Utilisateur qui a acheté</th>
+                            <th style="width: 30%">Montant</th>
+                            <th style="width: 30%">Validité</th>
+                            <th style="width: 30%">Code validation Stripe</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for gift in gifts %}
+                            <tr>
+                                <td>{{ gift.id }}</td>
+                                <td>{{ gift.code }}</td>
+                                <td>{{ gift.event ? 'Bon pour atelier' : 'Bon pour montant' }}</td>
+                                <td>{{ gift.user.firstName }} ({{ gift.user.email }})</td>
+                                <td>{{ gift.amount }}€</td>
+                                <td style="color:{% if gift.isValid %}green{% else %}red{% endif %}">{{ gift.isValid ? 'Valide' : 'Non valide' }}</td>
+                                <td>{{ gift.chargeId }}</td>
+                            </tr>
+                        {% else %}
+                            <tr><td>Aucun bon cadeau acheté pour le moment</td></tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <p class="text-center"><div class="navigation">
+                    {{ knp_pagination_render(gifts) }}
+                </div></p>
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<!-- Bootstrap 4 -->
+<script src="{{ asset('back/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('back/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('back/plugins/toastr/toastr.min.js') }}"></script>
+
+{% if app.request.get('action') == 'success' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'success',
+                title: ' Catégorie ajoutée avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% if app.request.get('action') == 'editsuccess' %}
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            Toast.fire({
+                type: 'info',
+                title: ' Catégorie editée avec succès.'
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

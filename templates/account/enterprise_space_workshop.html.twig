@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes ateliers - Mon espace{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - Mes ateliers</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <h4>Gestion de mes ateliers</h4>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Nb dates</th>
+                <th scope="col">Formateur</th>
+                <th scope="col">Dates</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+            <tr>
+                <th scope="row">{{ event.id }}</th>
+                <td>{{ event.title }}</td>
+                <td>{{ event.price }}€</td>
+                <td>{{ event.workshopDates|length }}</td>
+                <td>{{ event.formatorName }}</td>
+                <td><a class="btn btn-info btn-sm" href="{{ path('front_space_workshop_dates', {'id': event.id}) }}">
+                        <i class="fas fa-calendar">
+                        </i>
+                        Voir
+                    </a></td>
+                <td class="project-actions text-right">
+                    <a class="btn btn-info btn-sm" href="{{ path('front_space_workshop_edit', {'id': event.id}) }}">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Editer
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="{{ path('front_space_workshop_remove', {'id': event.id}) }}" onclick="return confirm('Attention ! Etes-vous sûr de vouloir supprimer cet atelier ?');">
+                        <i class="fas fa-trash">
+                        </i>
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="cart-options clearfix">
+            <div class="float-left fix_mobile">
+                <a type="submit" href="{{ path('front_space_home') }}" class="btn btn-secondary">Retour</a>
+            </div>
+        </div>
+    </div>
+    <!--/row-->
+{% endblock %}

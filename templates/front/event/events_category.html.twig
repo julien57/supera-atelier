@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="hero_in tours" style="background-image:url({{ asset('img/cuisine-enfant-categorie.jpg') }});background-position:top;background-repeat:no-repeat;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>{% if eventType.name is defined %}{{ eventType.name }}{% else %}{{ eventType }}{% endif %}</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->s
+
+    <div class="container margin_60_35">
+        <div class="col-lg-12 mb-5">
+            {{ include('front/inc/searchbar.html.twig') }}
+            <!-- /row -->
+        </div>
+        <!-- /custom-search-input-2 -->
+
+        <div class="container margin_60_35">
+            {% for event in pagination %}
+                <div class="box_list">
+                    <div class="row no-gutters">
+                        <div class="col-lg-5">
+                            <figure>
+                                <small>{{ event.eventType.name }}</small>
+                                <a href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}"><img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Voir</span></div></a>
+                            </figure>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="wrapper">
+                                <h3><a href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}">{{ event.title }}</a></h3>
+                                <p>{{ event.description|slice(0,130) }}</p>
+                                <span class="price"><i class="icon_house mr-1 mt-2" style="color:rgb(143,60,0)"></i> {{ event.user.zipCode }}, {{ event.user.city }}</span><br>
+                                <span class="price mt-1"><i class="icon_creditcard mr-1" style="color:rgb(143,60,0)"></i>  <strong>{{ event.price }}€</strong> / par personne</span><br>
+                                {% if app.user and app.user.moneyGift > 0 %}{% set priceEventWithGift = event.price - app.user.moneyGift %}<span class="price mt-1"><i class="icon_gift mr-1" style="color:rgb(143,60,0)"></i> <strong>{{ priceEventWithGift > 0 ? priceEventWithGift : 0 }}€</strong>  avec votre bon cadeau{% endif %}</span><br>
+                            </div>
+                            <ul>
+                                <li><i class="icon_clock_alt"></i> {% if event.getFirstWorkshopDates %}{{ event.getFirstWorkshopDates.duration }}{% endif %}</li>
+                                <li><div class="rating"><span>
+                                            {% for i in range(1, 10) %}
+                                            {% if loop.index <= event.note %}
+                                                <i class="icon_star voted"></i>
+                                            {% else %}
+                                                <i class="icon_star"></i>
+                                            {% endif %}
+                                            {% endfor %}</span>(<strong style="font-size:1.2em">{{ event.comments|length }} notes</strong>)
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-center">Aucun atelier ne correspond aux critères de recherche.</p>
+            {% endfor %}
+        </div>
+        <!-- /isotope-wrapper -->
+
+        <p class="text-center"><div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div></p>
+
+    </div>
+    <!-- /container -->
+
+    {{ include('front/inc/helpbar.html.twig') }}
+    <!-- /bg_color_1 -->
+{% endblock %}

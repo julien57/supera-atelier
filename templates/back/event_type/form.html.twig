@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+    <div class="card-body">
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.name) }}
+                <p><small>Trouvez des icônes ici : <a target="_blank" href="https://www.flaticon.com/">Flaticon.com</a></small></p>
+            </div>
+            <div class="form-group">
+                {{ form_row(form.icon, {'attr': {'class': 'form-control'}}) }}
+                {% if eventType is defined and eventType.icon %}
+                    Rendu icône avant soumission formulaire :<br> <img style="width:100px;height:100px;" src="{{ asset( constant('App\\Services\\File\\UploadFile::ICON_UPLOAD_DIR')) ~ eventType.icon }}">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    {% if app.request.attributes.get('_route') == 'front_event_single' %}
+        <style>
+            .mfp-content{height:60%;}
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <section class="hero_in tours_detail" style="background-image:url({{ asset(constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR') ~ event.firstPhoto.url) }});background-position:center;background-repeat:no-repeat;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>{{ event.title }}</h1>
+            </div>
+            <span class="magnific-gallery">
+                {% for photo in event.photos %}
+                    <a href="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" class="btn_photos" title="Photo title" data-effect="mfp-zoom-in">Voir les photos</a>
+                {% endfor %}
+            </span>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <!-- Sign In Popup -->
+    <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide" style="max-width:50%;height:100%;">
+        <div class="small-dialog-header" style="width:100%">
+            <h3>Dates de l'atelier</h3>
+        </div>
+        <div class="list_articles add_bottom_30 clearfix">
+            <div class="row">
+                <div class="col-md-12" style="height:400px;overflow-y: scroll;">
+                    {% for date in workshopDates %}
+                        {% if date(date.startAt) > date() %}
+                        <div class="row border-bottom pt-2 pb-2 mt-2">
+                            <div class="col-md-9 pt-1">
+                                {{ date.startAt|format_datetime('full', 'none', locale='fr') }} de {{ date.startAt|date('H:i') }} à {{ date.endAt|date('H:i') }}<br>
+                                {% set places = date.event.nbMembers - date.reservations|length %}
+                                {% if places <= 0 %}
+                                    Aucune place disponible
+                                {% else %}
+                                    {{ date.event.nbMembers - date.reservations|length }} places restantes
+                                {% endif %}
+                            </div>
+                            <div class="col-md-3">
+                                {% if places <= 0 %}
+                                    <button type="button" class="btn btn-danger">Complet</button>
+                                {% else %}
+                                    <a href="{{ path('front_reservation_informations', {'id': date.id}) }}" class="btn btn-success">Réserver</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!--form -->
+    </div>
+
+
+    <div class="bg_color_1">
+        <nav class="secondary_nav sticky_horizontal">
+            <div class="container">
+                <ul class="clearfix">
+                    <li><a href="#description" class="active">Description</a></li>
+                    <li><a href="#reviews">Notes & avis</a></li>
+                    <li><a href="#sidebar">Booking</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container margin_60_35">
+            <div class="row">
+                <div class="col-lg-8">
+                    <section id="description">
+                        <h2>Description</h2>
+                        <p>{{ event.description }}</p>
+                    </section>
+                    <!-- /section -->
+
+                    <section id="reviews">
+                        <h2>Notes & commentaires</h2>
+                        <div class="reviews-container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div id="review_summary">
+                                        <strong>{{ event.note|number_format(1, '.') }}</strong>
+                                        <em>{{ event.comments|length }} notes</em>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /row -->
+                        </div>
+
+                        <hr>
+
+                        <div class="add-review">
+                            <h5>Notez et commentez</h5>
+                            {% for message in app.flashes('notice') %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                            {% if eventCommented %}
+                                <p>{{ messageComment }}</p>
+                            {% else %}
+                            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        {{ form_label(form.noteUser) }}
+                                        <div class="custom-select-form">
+                                            {{ form_widget(form.noteUser, {'attr': {'id':'rating_review', 'class':'wide'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        {{ form_row(form.content, {'attr': {'class': 'form-control', 'rows':5}}) }}
+                                    </div>
+                                    <div class="form-group col-md-12 add_top_20">
+                                        <input type="submit" value="Ajouter" class="btn_1" id="submit-review">
+                                    </div>
+                                </div>
+                            {{ form_end(form) }}
+                            {% endif %}
+                        </div>
+
+                        <div class="reviews-container">
+                            {% for comment in event.comments %}
+                            <div class="review-box clearfix">
+                                <figure class="rev-thumb"><img src="img/avatar1.jpg" alt="">
+                                </figure>
+                                <div class="rev-content">
+                                    <div class="rating">
+                                        {% for i in range(1, 10) %}
+                                            {% if loop.index <= comment.noteUser %}
+                                                <i class="icon_star voted"></i>
+                                            {% else %}
+                                                <i class="icon_star"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="rev-info">
+                                        {{ comment.user.firstName }} – {{ comment.publishedAt|format_datetime('full', 'none', locale='fr') }} :
+                                    </div>
+                                    <div class="rev-text">
+                                        <p>
+                                            {{ comment.content }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                        <!-- /review-container -->
+                    </section>
+                    <!-- /section -->
+                    <hr>
+                </div>
+                <!-- /col -->
+
+                <aside class="col-lg-4" id="sidebar">
+                    <div class="box_detail booking">
+                        <div class="price">
+                            <span>{{ event.nbMembers }} <small>personnes max.</small></span>
+                        </div>
+                        <div class="price">
+                            <span>{{ event.price }}€ <small>/ personne</small></span>
+                            <div class="score"><span>Note<em>{{ event.comments|length }} notes</em></span><strong>{{ event.note|number_format(1, '.') }}</strong></div>
+                        </div>
+                        {% if app.user and app.user.moneyGift > 0 %}
+                            {% set priceEventWithGift = event.price - app.user.moneyGift %}
+                            <div class="price">
+                                <span>{{ priceEventWithGift > 0 ? priceEventWithGift : 0 }}€ <small>/ en utilisant ta carte cadeau</small></span>
+                            </div>
+                        {% endif %}
+                        <div class="price mb-0">
+                            <span><a href="#sign-in-dialog" id="button-display-dates" class="btn btn-success">Voir les dates</a></span>
+                        </div>
+                        {% if app.session.get('btnOffertWorkshop') %}
+                            <div class="price mt-2 mb-0 mt-5" style="border-bottom:0">
+                                <a href="{{ path('front_gift_choice_workshop', {'id': event.id}) }}" class="btn" id="submit-review" style="color:white;font-weight:600;font-size:inherit;background:yellowgreen">
+                                    <i class="icon_gift"></i> Offrir en carte cadeau</a>
+                            </div>
+                        {% endif %}
+                        <div class="price pt-3">
+                            <span><small style="font-size:0.6em">Adresse</small></span>
+                            <div class="score"><span>{{ event.user.adress }}<br> {{ event.user.zipCode }}, {{ event.user.city }}</span></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bg_color_1 -->
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<!-- Map -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="{{ asset('js/map_single_tour.js') }}"></script>
+<script src="{{ asset('js/infobox.js') }}"></script>
+<script src="{{ asset('js/input_qty.js') }}"></script>
+{% endblock %}

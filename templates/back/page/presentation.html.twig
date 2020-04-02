@@ -1,0 +1,132 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Page présentation{% endblock %}
+
+{% block style %}
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/toastr/toastr.min.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <h1>Page présentation</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Page présentation</h3>
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    {{ form_start(form) }}
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Page Présentation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Page Nos valeurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Page Avantages de proposer atelier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#depose" role="tab" aria-controls="depose" aria-selected="false">Page Qui peut déposer atelier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#mentions" role="tab" aria-controls="mentions" aria-selected="false">Mentions Légales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#cgv" role="tab" aria-controls="cvg" aria-selected="false">CGV</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#cookies" role="tab" aria-controls="cookies" aria-selected="false">Cookies</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-5" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="form-group">
+                                    {{ form_row(form.presentation, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="form-group">
+                                {{ form_row(form.valeurs, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group">
+                                {{ form_row(form.avantagesAtelier, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="depose" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group">
+                                {{ form_row(form.quipeutdeposer, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="mentions" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group">
+                                {{ form_row(form.mentions, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cgv" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group">
+                                {{ form_row(form.cgv, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="cookies" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group">
+                                {{ form_row(form.cookies, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit"
+                            class=" btn btn-success float-right mb-5"
+                            >Enregistrer</button>
+                    {{ form_end(form) }}
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script>
+$('#myTab').tab('show')
+</script>
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+        CKEDITOR.replace( 'page[presentation]' );
+        CKEDITOR.replace( 'page[valeurs]' );
+        CKEDITOR.replace( 'page[avantagesAtelier]' );
+        CKEDITOR.replace( 'page[quipeutdeposer]' );
+        CKEDITOR.replace( 'page[mentions]' );
+        CKEDITOR.replace( 'page[cgv]' );
+        CKEDITOR.replace( 'page[cookies]' );
+</script>
+{% endblock %}

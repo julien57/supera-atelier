@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Ma carte cadeau</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="form_title">
+                <h3>Félicitation !</h3>
+                <p>Votre carte cadeau à bien été validée et vous permet maintenant de bénéficier d'une somme de <strong>{{ giftAmount.amount }}€</strong> sur tout le site.</p>
+                <div class="row mt-4">
+                </div>
+                {% if app.user %}
+                    <div class="cart-options clearfix mb-5">
+                        <div class="float-right fix_mobile">
+                            <a href="{{ path('front_space_home') }}" class="btn_1 outline">Voir mon compte</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="cart-options clearfix mb-5">
+                        <div class="float-left fix_mobile">
+                            Il ne manque plus qu'à vous identifier !
+                        </div>
+                        <div class="float-right fix_mobile">
+                            <a href="{{ path('front_client_subscription') }}" class="btn_1 outline">Je m'inscris</a>
+                            <a href="{{ path('app_front_login') }}" class="btn_1 outline">Je me connecte</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

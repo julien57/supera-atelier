@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/fond-bois.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Aide</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg_color_1 mt-5">
+        <div class="container margin_60_35">
+            <div class="pricing-container cd-has-margins">
+                <div class="main_title_2">
+                    <span><em></em></span>
+                    <h2>Aide</h2>
+                    <p>Besoin d'aide ? Contactez-Nous !</p>
+                </div>
+
+                <div class="row mt-4 mb-5">
+
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'col-md-8 mb-5 m-auto'}}) }}
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.name) }}
+                                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                                    <small style="color:red">{{ form_errors(form.name) }}</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.email) }}
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                    <small style="color:red">{{ form_errors(form.email) }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.subject) }}
+                                    {{ form_widget(form.subject, {'attr': {'class': 'form-control'}}) }}
+                                    <small style="color:red">{{ form_errors(form.subject) }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /row -->
+                        <div class="form-group">
+                            {{ form_label(form.message) }}
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows': 6}}) }}
+                            <small style="color:red">{{ form_errors(form.message) }}</small>
+                        </div>
+                        <input type="submit" value="Envoyer" class="btn_1 rounded" id="submit-contact">
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <!-- /pricing-container -->
+        </div>
+    </div>
+{% endblock %}

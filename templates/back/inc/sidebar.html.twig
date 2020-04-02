@@ -1,0 +1,104 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{ path('front_home_index') }}" class="brand-link">
+        <span class="brand-text font-weight-light">SuperAtelier</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ asset('back/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Admin</a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">Dashboard</li>
+                <li class="nav-item">
+                    <a href="{{ path('admin_dashboard') }}" class="nav-link {% if app.request.get('_route') == 'admin_dashboard' %}active{% endif %}">
+                        <i class="nav-icon far fa-chart-bar"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">Ateliers</li>
+                <li class="nav-item">
+                    <a href="{{ path('admin_events_type_list') }}" class="nav-link {% if app.request.get('_route') == 'admin_events_list' %}active{% endif %}">
+                        <i class="nav-icon far fa-list-alt"></i>
+                        <p>
+                            Catégories
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('admin_event_list') }}" class="nav-link {% if app.request.get('_route') == 'admin_event_list' %}active{% endif %}">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Ateliers
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('back_reservations_list') }}" class="nav-link {% if app.request.get('_route') == 'back_reservations_list' %}active{% endif %}">
+                        <i class="nav-icon far fa-credit-card"></i>
+                        <p>
+                            Réservation
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">Cadeaux</li>
+                <li class="nav-item">
+                    <a href="{{ path('back_gift_list') }}" class="nav-link {% if app.request.get('_route') == 'back_gift_list' %}active{% endif %}">
+                        <i class="nav-icon far fa-gift"></i>
+                        <p>
+                            Bons cadeaux
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">Notes & Avis</li>
+                <li class="nav-item">
+                    <a href="{{ path('back_comments_list') }}" class="nav-link {% if app.request.get('_route') == 'back_comments_list' %}active{% endif %}">
+                        <i class="nav-icon far fa-quote-right"></i>
+                        <p>
+                            Notes & avis
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">Pages</li>
+                <li class="nav-item">
+                    <a href="{{ path('back_page_presentation') }}" class="nav-link {% if app.request.get('_route') == 'back_page_presentation' %}active{% endif %}">
+                        <i class="nav-icon far fa-quote-right"></i>
+                        <p>
+                            Pages statiques
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+<!-- /.sidebar -->
+</aside>

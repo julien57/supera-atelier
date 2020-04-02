@@ -1,0 +1,260 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Ajout type évènement{% endblock %}
+
+{% block style %}
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('back/plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+{% endblock %}
+
+{% block body %}
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Ajouter un atelier</h1>
+                </div>
+                <div class="col-sm-2">
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Ajouter un atelier</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                {{ include('back/event/form.html.twig') }}
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Ajout des heures</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="form_submitted"></div>
+                    <form method="post" id="formHours">
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+
+	<script>
+    jQuery(document).ready(function () {
+
+        $collectionHolder = $('ul.tags');
+
+        // add a delete link to all of the existing tag form li elements
+        $collectionHolder.find('li').each(function() {
+            addTagFormDeleteLink($(this));
+        });
+
+        jQuery('.add-another-collection-widget').click(function (e) {
+            var list = jQuery(jQuery(this).attr('data-list-selector'));
+
+            // Try to find the counter of the list or use the length of the list
+            counter = list.data('widget-counter') || list.children().length;
+
+            // grab the prototype template
+            var newWidget = list.attr('data-prototype');
+            counter++;
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = `<div id="event_form_photos_${counter}"><div><input type="file" id="event_form_photos_${counter}_url" name="event_form[photos][${counter}][url]" required="required" /></div></div>`;
+            // Increase the counter
+
+            // And store it, the length cannot be used if deleting widgets is allowed
+            list.data('widget-counter', counter);
+
+            // create a new list element and add it to the list
+            var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+            addTagFormDeleteLink(newElem);
+            var stepNb = `<h4 class="col-md-12" style="background-color:#009973;color:white;text-align:center;border-radius:5px"><span style="text-align:center">Photo ${counter}</span></h4><img style="width:100%;height:180px;background:rgba(34,139,34,0.2);" id="previewPhoto${counter}">`;
+            newElem.prepend(stepNb);
+
+            newElem.appendTo(list);
+
+            document.getElementById(`event_form_photos_${counter}_url`).onchange = function () {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById(`previewPhoto${counter}`).src = e.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            };
+        });
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="btn btn-block btn-danger btn-sm col-md-12 mt-3">Supprimer cette photo</button>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                counter--;
+
+                $tagFormLi.remove();
+            });
+        }
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    var calendarEl = document.getElementById('calendar-holder');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        defaultView: 'dayGridMonth',
+        selectable: true,
+        selectHelper: true,
+        locales: 'frLocale',
+        buttonText: {
+        today: 'Aujourd\'hui',
+            month: 'mois',
+            week: 'semaine',
+            day: 'jour'
+        },
+        locale: 'fr',
+        editable: true,
+        select: function(start, end, allDay) {
+            $('form#formHours').empty();
+            $('form#formHours').append('<div class="row">\n'+
+'                <div class="col-sm-6">\n'+
+'                    <div class="form-group text-center">\n'+
+'                        <label for="start">De</label>\n'+
+'                        <input type="time" id="start" name="start" min="06:00" max="22:00" class="form-control" required>\n'+
+'                        <small>Format <strong>hh:mm</strong></small>\n'+
+'                    </div>\n'+
+'                </div>\n'+
+'                <div class="col-sm-6">\n'+
+'                    <div class="form-group text-center">\n'+
+'                        <label for="end">à</label>\n'+
+'                        <input type="time" id="end" name="end" min="06:00" max="22:00" class="form-control" required>\n'+
+'                        <small>Format <strong>hh:mm</strong></small>\n'+
+'                    </div>\n'+
+'                </div>\n'+
+'            </div>\n'+
+'            <button type="submit" class="btn btn-success" id="validDate">Valider</button>\n'+
+'            <input type="hidden" id="dateToSelect" name="datetoselect" value="" required>');
+            $('#form_submitted').text('');
+
+            $('#exampleModalCenter').modal('show');
+
+            var dateToDisplay = start.start.toLocaleDateString();
+
+            $('#dateSelected').text(dateToDisplay);
+            $('#dateToSelect').val(start.startStr);
+
+            $('#validDate').on('click', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('front_subscription_add_dates') }}",
+                    data: $('form#formHours').serialize(),
+                    success: function(response) {
+
+                        if (response.message === 'ok') {
+                            $('form#formHours').empty();
+                            $('#form_submitted').text(`De ${response.hourStart} à ${response.hourEnd}.`);
+
+                            $.each(response, function(i) {
+
+                                $('.fc-day[data-date="'+response.dateSelected+'"]').css('background', 'yellowgreen');
+                            });
+                            $('.message-empty').remove();
+
+                            $('#list_dates').append(`<li class="mt-3">${response.dateSelected} de ${response.hourStart} à ${response.hourEnd}</li>`)
+
+                        }
+                    },
+                    error: function() {
+                        console.log('Error');
+
+                    }
+                });
+                return false;
+            });
+        },
+        eventSources: [
+            {
+                url: "/fc-load-events",
+                method: "POST",
+                extraParams: {
+                    filters: JSON.stringify({})
+                },
+                failure: () => {
+                    // alert("There was an error while fetching FullCalendar!");
+                },
+            },
+        ],
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay',
+        },
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+        timeZone: 'UTC',
+    });
+    calendar.setOption('locale', 'fr');
+    calendar.render();
+});
+</script>
+<script>
+    $('#removedateSend').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "{{ path('front_subscription_remove_dates') }}",
+        data: $('form.formtodates').serialize(),
+        success: function(response) {
+
+            $('#list_dates li').remove();
+            $('.fc-day').css('background', 'white');
+        },
+        error: function() {
+            alert('Error');
+
+        }
+    });
+    return false;
+});
+
+
+</script>
+{% endblock %}

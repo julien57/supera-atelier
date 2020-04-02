@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp animated"><span></span>Paiement de la réservation</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="bg_color_1">
+        <div class="container margin_60_35">
+            <div class="row">
+                <div class="col-lg-8">
+                    {% for message in app.flashes('danger') %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% if priceEvent != 0 or priceEvent is null %}
+                        <div class="box_cart">
+                            <div class="form_title">
+                                <h3>Paiement</h3>
+                            </div>
+                            <div class="step mt-3">
+                                {{ form_start(form, {attr: {id: form.vars.id}}) }}
+                                <h5>Par carte bancaire</h5>
+                                <div class="form-group">
+                                    <label for="card-element">
+                                        Renseignez votre carte bancaire
+                                    </label>
+                                    <div id="card-element" class="form-control"></div>
+                                    <div id="card-errors" class="help-block" role="alert"></div>
+                                </div>
+                                {{ form_widget(form.token) }}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn_1 full-width purchase">Payer</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('img/cards_all.svg') }}" alt="carte bancaire">
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                            <hr>
+                            <div class="step mt-3">
+                                <h5>Ou par PayPal</h5>
+                                <div class="form-group mt-4">
+                                    <a href="{{ path('front_reservation_payment_paypal') }}"><img src="{{ asset('img/bouton-paypal.png') }}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                    <div class="box_cart">
+                        <div class="form_title">
+                            <h3>Réservation</h3>
+                            <p>Vous souhaitez réserver sans payer, en utilisant votre carte cadeau ? il suffit de cliquer sur le bouton ci-dessous.<br>
+                            Le tarif de l'atelier sera ensuite déduit de votre carte.</p>
+                        </div>
+                        <div class="step mt-3">
+                            <div class="cart-options clearfix">
+                                <div class="float-right fix_mobile">
+                                    <a href="{{ path('front_reservation_without_payment') }}" class="btn_1 outline">Valider la réservation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <aside class="col-lg-4" id="sidebar">
+                    <div class="box_detail">
+                        <div id="total_cart">
+                            Total <span class="float-right">{% if priceEvent is not null %}<span style="text-decoration:line-through;">{{ workshopDate.event.price|number_format(2, '.') }}€</span>{% else %}{{ workshopDate.event.price|number_format(2, '.') }}€{% endif %}</span>
+                        </div>
+                        {% if priceEvent is not null %}
+                            <div id="total_cart">
+                                <span style="font-size:0.6em">Avec votre carte cadeau :</span> <span class="float-right">{{ priceEvent|number_format(2, '.') }}€</span>
+                            </div>
+                        {% endif %}
+                        <ul class="cart_details">
+                            <li>Le <span>{{ workshopDate.startAt|date('d/m/Y') }}</span></li>
+                            <li>De <span>{{ workshopDate.startAt|date('H:i') }}h</span></li>
+                            <li>A <span>{{ workshopDate.endAt|date('H:i') }}h</span></li>
+                            <li>Nb personnes max <span>{{ workshopDate.event.nbMembers }}</span></li>
+                        </ul>
+                        <div class="text-center"><small> </small></div>
+                    </div>
+                </aside>
+            </div>
+            <!--End step -->
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bg_color_1 -->
+
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  var form = document.getElementById('{{ form.vars.id }}');
+  var errors = document.getElementById('card-errors');
+
+  var stripe = Stripe('pk_test_UQ4N6a1zEJnQ9mTXMFtwRokm00PpPtQCIr');
+  var elements = stripe.elements();
+  var card = elements.create('card');
+
+  card.mount('#card-element');
+  card.addEventListener('change', function(event) {
+    if (event.error) {
+      errors.textContent = event.error.message;
+      form.classList.add('has-error');
+    } else {
+      errors.textContent = '';
+      form.classList.remove('has-error');
+    }
+  });
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    stripe.createToken(card).then(function(result) {
+      if (result.error) {
+        errors.textContent = result.error.message;
+        form.classList.add('has-error');
+      } else {
+        document.getElementById('{{ form.children.token.vars.id }}').setAttribute('value', result.token.id);
+        form.submit();
+      }
+    });
+  });
+</script>
+{% endblock %}

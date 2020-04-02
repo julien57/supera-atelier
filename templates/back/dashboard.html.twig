@@ -1,0 +1,169 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ countEvents }}</h3>
+
+                            <p>Ateliers</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-document-text"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ countComments }}</h3>
+
+                            <p>Commentaires & notes</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-list"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ countReservations }}</h3>
+
+                            <p>Réservations</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">5 derniers ateliers ajoutés</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Titre
+                            </th>
+                            <th style="width: 20%">
+                                Prix
+                            </th>
+                            <th style="width: 20%">
+                                Note de l'atelier
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in lastEvents %}
+                            <tr>
+                                <td>{{ event.id }}</td>
+                                <td>{{ event.title }}</td>
+                                <td>{{ event.price }}€</td>
+                                <td>{{ event.note ? event.note : 'Aucune note' }}</td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" target="_blank" href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Voir
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">5 dernières réservations</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i></button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Nom / Prénom
+                            </th>
+                            <th style="width: 20%">
+                                Prix
+                            </th>
+                            <th style="width: 20%">
+                                Heure
+                            </th>
+                            <th style="width: 20%">
+                                 Atelier
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reservation in lastReservations %}
+                            <tr>
+                                <td>{{ reservation.id }}</td>
+                                <td>{{ reservation.user.firstName }} {{ reservation.user.lastName }}</td>
+                                <td>{{ reservation.workshopDate.event.price }}€</td>
+                                <td>{{ reservation.reservedAt|date('d/m/Y à H:i') }}</td>
+                                <td>{{ reservation.workshopDate.event.title }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}

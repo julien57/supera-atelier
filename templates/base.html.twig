@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="author" content="Julien Montel - contact@graphx.fr">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{{ asset('img/apple-touch-icon-57x57-precomposed.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{ asset('img/apple-touch-icon-72x72-precomposed.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{ asset('img/apple-touch-icon-114x114-precomposed.png') }}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{ asset('img/apple-touch-icon-144x144-precomposed.png') }}">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/vendors.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('back/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('js/modernizr_slider.js') }}" rel="stylesheet">
+    {% block style %}{% endblock %}
+
+</head>
+
+<body>
+
+<div id="page">
+
+    {{ include('front/inc/header.html.twig') }}
+    <!-- /header -->
+
+    <main>
+
+        {% block body %}{% endblock %}
+        <!--/call_section-->
+    </main>
+    <!-- /main -->
+
+    {{ include('front/inc/footer.html.twig') }}
+    <!--/footer-->
+</div>
+<!-- page -->
+
+
+<!-- /Sign In Popup -->
+
+<div id="toTop"></div><!-- Back to top button -->
+
+<!-- COMMON SCRIPTS -->
+<script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
+<script src="{{ asset('js/common_scripts.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('assets/validate.js') }}"></script>
+
+<script>
+    $(function() {
+        $('input[name="date"]').daterangepicker({
+            autoUpdateInput: false,
+            linkedCalendars: false,
+            singleDatePicker: true,
+            locale: {
+                format: "DD-MM-YYYY",
+                showCustomRangeLabel: false,
+                separator: " - ",
+                applyLabel: "Valider",
+                cancelLabel: "Annuler",
+                fromLabel: "De",
+                toLabel: "à",
+                customRangeLabel: "Custom",
+                daysOfWeek: [
+                    "Dim",
+                    "Lun",
+                    "Mar",
+                    "Mer",
+                    "Jeu",
+                    "Ven",
+                    "Sam"
+                ],
+                monthNames: [
+                    "Janvier",
+                    "Février",
+                    "Mars",
+                    "Avril",
+                    "Mai",
+                    "Juin",
+                    "Juillet",
+                    "Août",
+                    "Septembre",
+                    "Octobre",
+                    "Novembre",
+                    "Décembre"
+                ],
+                firstDay: 1
+            }
+        });
+        $('input[name="date"]').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD-MM-YYYY'));
+        });
+        $('input[name="date"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+        });
+    });
+</script>
+
+<!-- INPUT QUANTITY  -->
+<script src="{{ asset('js/input_qty.js') }}"></script>
+{% if app.request.attributes.get('_route') == 'front_home_index' %}
+<script>
+    $('#sign-in').click()
+</script>
+{% endif %}
+<script src="{{ asset('js/jquery.cookiebar.js') }}"></script>
+<script>
+    {% if app.session.get('cookies') is null %}
+    {{ app.session.set('cookies', 'cookies') }}
+    $(document).ready(function() {
+        'use strict';
+        $.cookieBar({
+            fixed: true
+        });
+    });
+    {% endif %}
+</script>
+{% block javascript %}{% endblock %}
+</body>
+</html>

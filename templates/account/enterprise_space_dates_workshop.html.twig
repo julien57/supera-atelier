@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes ateliers - Mon espace{% endblock %}
+
+{% block body %}
+    <section class="hero_in general">
+        <div class="wrapper">
+            <div class="container">
+                <h1 class="fadeInUp"><span></span>Mon espace - Dates de l'atelier {{ event.title }}</h1>
+            </div>
+        </div>
+    </section>
+    <!--/hero_in-->
+
+    <div class="container margin_80_55">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <h4>Les dates de l'atelier {{ event.title }}</h4>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Heure début</th>
+                <th scope="col">Heure fin</th>
+                <th scope="col">Nb participants</th>
+                <th scope="col">Participants</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for date in event.workshopDates %}
+                <tr>
+                    <th scope="row">{{ date.id }}</th>
+                    <td>{{ date.startAt|date('d/m/Y') }}h</td>
+                    <td>{{ date.startAt|date('H:i') }}h</td>
+                    <td>{{ date.endAt|date('H:i') }}h</td>
+                    <td>{{ date.reservations|length }}</td>
+                    <td><a class="btn btn-info btn-sm" href="{{ path('front_space_workshop_participants', {'id': date.id}) }}">
+                            <i class="fas fa-users">
+                            </i>
+                            Voir
+                        </a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="cart-options clearfix">
+            <div class="float-left fix_mobile">
+                <a type="submit" href="{{ path('front_space_home') }}" class="btn btn-secondary">Retour</a>
+            </div>
+        </div>
+    </div>
+    <!--/row-->
+{% endblock %}
