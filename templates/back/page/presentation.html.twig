@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-4">
-                    <h1>Page présentation</h1>
+                    <h1>Pages</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -26,7 +26,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Page présentation</h3>
+                    <h3 class="card-title">Page éditables</h3>
                     {% for message in app.flashes('success') %}
                         <div class="alert alert-success">
                             {{ message }}
@@ -49,19 +49,22 @@
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Page Nos valeurs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Page Avantages de proposer atelier</a>
+                            <a class="nav-link" id="avantages-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Page Avantages de proposer atelier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#depose" role="tab" aria-controls="depose" aria-selected="false">Page Qui peut déposer atelier</a>
+                            <a class="nav-link" id="depot-atelier-tab" data-toggle="tab" href="#depose" role="tab" aria-controls="depose" aria-selected="false">Page Qui peut déposer atelier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#mentions" role="tab" aria-controls="mentions" aria-selected="false">Mentions Légales</a>
+                            <a class="nav-link" id="mentions-tab" data-toggle="tab" href="#mentions" role="tab" aria-controls="mentions" aria-selected="false">Mentions Légales</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#cgv" role="tab" aria-controls="cvg" aria-selected="false">CGV</a>
+                            <a class="nav-link" id="cgv-tab" data-toggle="tab" href="#cgv" role="tab" aria-controls="cvg" aria-selected="false">CGV</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#cookies" role="tab" aria-controls="cookies" aria-selected="false">Cookies</a>
+                            <a class="nav-link" id="cookies-tab" data-toggle="tab" href="#cookies" role="tab" aria-controls="cookies" aria-selected="false">Cookies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="groups-tab" data-toggle="tab" href="#ceGroups" role="tab" aria-controls="cookies" aria-selected="false">CE & groupes</a>
                         </li>
                     </ul>
                     <div class="tab-content mt-5" id="myTabContent">
@@ -100,6 +103,11 @@
                                 {{ form_row(form.cookies, {'attr': {'class': 'form-control'}}) }}
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="ceGroups" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="form-group">
+                                {{ form_row(form.ceGroupds, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
                     </div>
                     <button type="submit"
                             class=" btn btn-success float-right mb-5"
@@ -128,5 +136,6 @@ $('#myTab').tab('show')
         CKEDITOR.replace( 'page[mentions]' );
         CKEDITOR.replace( 'page[cgv]' );
         CKEDITOR.replace( 'page[cookies]' );
+        CKEDITOR.replace( 'page[ceGroupds]' );
 </script>
 {% endblock %}

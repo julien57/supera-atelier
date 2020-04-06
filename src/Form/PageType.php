@@ -34,6 +34,9 @@ class PageType extends AbstractType
             ->add('cookies', TextareaType::class, [
                 'label' => 'Page "CGV"'
             ])
+            ->add('ceGroupds', TextareaType::class, [
+                'label' => 'Page "CGV"'
+            ])
         ;
     }
 

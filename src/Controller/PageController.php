@@ -77,4 +77,14 @@ class PageController extends AbstractController
             'page' => $pageRepository->find(1)
         ]);
     }
+
+    /**
+     * @Route("/comites-entreprise-et-groupes", name="front_groups")
+     */
+    public function ceGroups(PageRepository $pageRepository)
+    {
+        return $this->render('front/page/groups.html.twig', [
+            'page' => $pageRepository->find(1)
+        ]);
+    }
 }

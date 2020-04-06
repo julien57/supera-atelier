@@ -541,7 +541,7 @@ ul, ol {
 }
 @media (min-width: 767px) {
   header nav {
-    width:90%!important;
+    width:80%!important;
   }
 
   header #menu ul {

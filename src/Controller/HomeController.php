@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Repository\EventRepository;
 use App\Repository\EventTypeRepository;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,5 +23,18 @@ class HomeController extends AbstractController
             'topEvents' => $eventRepository->getTopEvents(),
             'topCategories' => $topCategoriesEvents
         ]);
+    }
+
+    /**
+     * @Route("/make-admin", name="make_admin")
+     */
+    public function use(UserRepository $userRepository, EntityManagerInterface $em)
+    {
+        $admin = $userRepository->find(1);
+        $admin->setRoles(["ROLE_ADMIN"]);
+
+        $em->flush();
+
+        return $this->redirectToRoute('front_home_index');
     }
 }

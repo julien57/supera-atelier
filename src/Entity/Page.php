@@ -51,6 +51,11 @@ class Page
      */
     private $cookies;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $ceGroupds;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,5 +159,23 @@ class Page
     public function setCookies($cookies): void
     {
         $this->cookies = $cookies;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCeGroupds()
+    {
+        return $this->ceGroupds;
+    }
+
+    /**
+     * @param mixed $ceGroupds
+     * @return Page
+     */
+    public function setCeGroupds(string $ceGroupds)
+    {
+        $this->ceGroupds = $ceGroupds;
+        return $this;
     }
 }

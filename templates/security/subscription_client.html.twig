@@ -31,7 +31,7 @@
 
     </head>
 
-    <body id="login_bg" style="background-image:url({{ asset('img/kids-cooking-header.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+    <body id="login_bg" style="background-image:url({{ asset('img/atelier-tagliatelle.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
 
     <nav id="menu" class="fake_menu"></nav>
 
@@ -43,7 +43,7 @@
     <div id="login">
         <aside class="pr-4 pl-4">
             <figure>
-                <a href="index.html">LOGO</a>
+                <a href="{{ path('front_home_index') }}">PassionAtelier</a>
             </figure>
             <p><small>Attention ! Si vous êtes une entreprise, veuillez <a href="{{ path('event_security_subscription_step1') }}">vous inscrire ici</a>.</small></p>
             {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}

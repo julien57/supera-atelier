@@ -340,11 +340,10 @@ class GiftController extends AbstractController
         $template = $this->session->get('eventIdGift') ? 'front/mail/gift_card_workshop.html.twig' : 'front/mail/gift_card_amount.html.twig';
 
         $message = (new \Swift_Message('Carte cadeau SuperAtelier'))
-            ->setFrom('carte-cadeau@super-atelier.com')
+            ->setFrom('contact@passionatelier.com')
             ->setTo($giftAmount->getUser()->getEmail())
             ->setBody(
                 $this->renderView(
-                // templates/emails/registration.html.twig
                     $template,
                     ['user' => $user, 'gift' => $giftAmount]
                 ),

@@ -100,7 +100,8 @@ class EventController extends AbstractController
 
         return $this->render('front/event/events_category.html.twig', [
             'pagination' => $pagination,
-            'eventType' => $eventType
+            'eventType' => $eventType,
+            'events' => $events
         ]);
     }
 
@@ -156,7 +157,7 @@ class EventController extends AbstractController
 
         return $this->render('front/event/single.html.twig', [
             'event' => $event,
-            'workshopDates' => $event->getAllWorkshopDates(),
+            'workshopDates' => $workshopDateRepository->getDatesEvent($event),
             'form' => $form->createView(),
             'eventCommented' => $eventCommented,
             'messageComment' => $messageComment

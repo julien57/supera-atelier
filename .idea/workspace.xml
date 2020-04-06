@@ -1,7 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="" />
+    <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/front/page/groups.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GiftController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GiftController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/enterprise_space_dates_workshop.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/enterprise_space_dates_workshop.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/enterprise_space_workshop.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/enterprise_space_workshop.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/enterprise_space_workshop_edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/enterprise_space_workshop_edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/entreprise_space_particpants.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/entreprise_space_particpants.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/participant_workshop_reserved.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/participant_workshop_reserved.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/personal_space.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/personal_space.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/account/space_profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/space_profil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/event/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/event/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/gift/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/gift/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/inc/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/inc/sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/gift_event.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/gift_event.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/gift_money.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/gift_money.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/my_gift_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/my_gift_card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/single.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/single.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/choice_amount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/choice_amount.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/choice_gift.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/choice_gift.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/choice_workshop.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/choice_workshop.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/connexion.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/connexion.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/payment_paypal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment_paypal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/personalize_card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/personalize_card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/success.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/success.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/helpbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/helpbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/page/avantage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/avantage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/page/cgv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/cgv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/page/cookies.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/cookies.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/page/depose_atelier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/depose_atelier.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/page/mentions.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/mentions.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/reservation/informations_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/informations_reservation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/reservation/payment_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/payment_reservation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/reservation/paypal_payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/paypal_payment.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/reservation/reservation_success.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/reservation_success.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/connexion.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/connexion.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/subscription_client.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/subscription_client.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +100,10 @@
     </expand>
     <select />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-code" />
@@ -167,6 +228,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1ZVGwWNNLVEQxzGBqaOp3trK90z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -177,23 +239,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/templates/back/event" />
+      <recent name="$PROJECT_DIR$/templates/back/event_type" />
+      <recent name="$PROJECT_DIR$/templates/back" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/templates/front" />
       <recent name="$PROJECT_DIR$/templates/back" />
       <recent name="$PROJECT_DIR$/src/Controller/Back" />
       <recent name="$PROJECT_DIR$/templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/templates/back/event" />
-      <recent name="$PROJECT_DIR$/templates/back/event_type" />
-      <recent name="$PROJECT_DIR$/templates/back" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -213,6 +275,7 @@
       <workItem from="1585136472282" duration="116000000" />
       <workItem from="1585403394456" duration="3827000" />
       <workItem from="1585413693807" duration="131475000" />
+      <workItem from="1586009901489" duration="14320000" />
     </task>
     <servers />
   </component>
@@ -220,9 +283,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1372" y="153" key="#CLI_Interpreters" timestamp="1585064968750">
+    <state x="-1372" y="153" key="#CLI_Interpreters" timestamp="1586031499202">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
+    <state x="-1372" y="153" key="#CLI_Interpreters/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586031499202" />
     <state x="-1372" y="153" key="#CLI_Interpreters/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585064968750" />
     <state x="-1360" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585065249539">
       <screen x="-1920" y="-49" width="1920" height="1080" />
@@ -233,11 +297,11 @@
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1263" y="301" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585648113513" />
-    <state x="-1172" y="214" key="#com.intellij.ide.util.MemberChooser" timestamp="1585658014333">
+    <state x="-1172" y="214" key="#com.intellij.ide.util.MemberChooser" timestamp="1585940448011">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1172" y="83" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584984285113" />
-    <state x="-1172" y="214" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585658014333" />
+    <state x="-1172" y="214" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585940448011" />
     <state x="-1250" y="-49" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585644974814">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
@@ -252,11 +316,11 @@
     <state x="-1222" y="122" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584992450135" />
     <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585834967519" />
     <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585642876624" />
-    <state x="-1088" y="122" key="SettingsEditor" timestamp="1585773224802">
+    <state x="-1088" y="122" key="SettingsEditor" timestamp="1586031513134">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1451" y="-1" key="SettingsEditor/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584919040995" />
-    <state x="-1088" y="122" key="SettingsEditor/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585773224802" />
+    <state x="-1088" y="122" key="SettingsEditor/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586031513134" />
     <state x="-1451" y="-1" key="SettingsEditor/0.23.1440.877/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584962684536" />
     <state x="-1088" y="122" key="SettingsEditor/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585065482853" />
     <state width="543" height="445" key="SwitcherDM" timestamp="1585599033330">
@@ -272,11 +336,11 @@
     </state>
     <state x="-1281" y="192" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584979678366" />
     <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585413703107" />
-    <state x="-1247" y="108" width="1042" height="740" key="find.popup" timestamp="1585841063622">
+    <state x="-1247" y="108" width="1042" height="740" key="find.popup" timestamp="1586191516769">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1368" y="85" width="816" height="550" key="find.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585045517688" />
-    <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585841063622" />
+    <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586191516769" />
     <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585829101572" />
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup" timestamp="1585390757834">
       <screen x="-1920" y="-49" width="1920" height="1080" />

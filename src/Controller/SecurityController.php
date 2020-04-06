@@ -157,6 +157,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('event_security_subscription_step1');
         }
 
+
         $event = $eventRepository->find($this->session->get('eventId'));
         if (!$event) {
             return $this->redirectToRoute('event_security_subscription_step1');
@@ -168,6 +169,15 @@ class SecurityController extends AbstractController
             $event->setUser($this->getUser());
             $this->em->flush();
 
+            return $this->redirectToRoute('event_security_subscription_success');
+        }
+
+        if ($this->getUser()) {
+            $event->setUser($this->getUser());
+            $this->em->flush();
+
+            $this->session->set('step2', true);
+            $this->session->set('userId', $this->getUser()->getId());
             return $this->redirectToRoute('event_security_subscription_success');
         }
 
@@ -341,7 +351,7 @@ class SecurityController extends AbstractController
             $this->em->flush();
 
             $message = (new \Swift_Message('Nouveau mot de passe'))
-                ->setFrom('contact@superatelier.fr')
+                ->setFrom('contact@passionatelier.fr')
                 ->setTo($userExist->getEmail())
                 ->setBody(
                     $this->renderView(

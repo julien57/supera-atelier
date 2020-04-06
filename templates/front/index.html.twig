@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}PassionAtelier - une expérience inoubliable{% endblock %}
+{% block description %}PassionAtelier propose des ateliers de tout type, réservez dès maintenant votre place pour participer. Vous êtes une entreprise ? créez votre atelier et transmettez votre passion à d'autres !{% endblock %}
+
 {% block body %}
-    <section class="hero_single version_2" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+    <section class="hero_single version_2" style="background-image:url({{ asset('img/atelier-tagliatelle.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
         <div class="wrapper">
             <div class="container">
                 <h3>Réservez votre expérience</h3>
@@ -67,38 +70,38 @@
             <h2>Comment ça marche ?</h2>
         </div>
         <div class="row justify-content-between">
-            <div class="col-lg-6 wow animated" data-wow-offset="150" style="visibility: visible;">
+            <div class="col-lg-5 wow animated" data-wow-offset="150" style="visibility: visible;">
                 <figure class="block-reveal">
                     <div class="block-horizzontal"></div>
-                    <img src="{{ asset('img/etapes-depose-atelier.jpg') }}" style="max-height:520px" class="img-fluid" alt="">
+                    <img src="{{ asset('img/cuisine-pate.jpg') }}" style="max-height:520px" class="img-fluid" alt="">
                 </figure>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 p-0">
-                        <a class="box_topic mb-0" href="#0">
-                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:40px;color:rgb(210,180,140)">1</span>
+                        <a class="box_topic mb-0" href="#0" style="min-height:260px">
+                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:50px;color:rgb(210,180,140)">1</span>
                             <i class="pe-7s-mouse" style="color:#af8d78;background-color:rgba(255,222,173,0.5)"></i>
                             <p>Choisissez votre thème d'activité</p>
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 p-0">
-                        <a class="box_topic mb-0" href="#0">
-                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:40px;color:rgb(210,180,140)">2</span>
+                        <a class="box_topic mb-0" href="#0" style="min-height:260px">
+                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:50px;color:rgb(210,180,140)">2</span>
                             <i class="pe-7s-home" style="color:#af8d78;background-color:rgba(255,222,173,0.5)"></i>
                             <p>Réservez un atelier près de chez vous</p>
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 p-0">
-                        <a class="box_topic mb-0" href="#0">
-                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:40px;color:rgb(210,180,140)">3</span>
+                        <a class="box_topic mb-0" href="#0" style="min-height:260px">
+                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:50px;color:rgb(210,180,140)">3</span>
                             <i class="pe-7s-credit" style="color:#af8d78;background-color:rgba(255,222,173,0.5)"></i>
                             <p>Payez directement en ligne</p>
                         </a>
                     </div>
                     <div class="col-lg-6 col-md-6 p-0">
-                        <a class="box_topic mb-0" href="#0">
-                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:40px;color:rgb(210,180,140)">4</span>
+                        <a class="box_topic mb-0" href="#0" style="min-height:260px">
+                            <span style="font-size:8em;position:absolute;font-family:'Timmons';bottom:90px;left:50px;color:rgb(210,180,140)">4</span>
                             <i class="pe-7s-like2" style="color:#af8d78;background-color:rgba(255,222,173,0.5)"></i>
                             <p style="margin-bottom:8px;">Notez et laissez un commentaire sur votre expérience</p>
                         </a>
@@ -145,7 +148,7 @@
     </div>
     <!-- /container -->
 
-    <div class="call_section" style="background:url({{ asset('img/poterie-ceramique.jpg') }}) center center no-repeat fixed;background-size:cover;">
+    <div class="call_section" style="background:url({{ asset('img/fille-cuisine.jpg') }}) center center no-repeat fixed;background-size:cover;">
         <div class="container clearfix">
             <div class="col-lg-5 col-md-6 float-left wow" data-wow-offset="250">
                 <div class="block-reveal">
@@ -153,13 +156,13 @@
                     <div class="box_1">
                         <h3>A la recherche d'un cadeau originale ?</h3>
                         <p>Si vous êtes à la recherche d'un cadeau originale et exclusif, vous êtes au bon endroit !</p>
-                        <a href="{{ path('event_security_subscription_step1') }}" class="btn rounded" style="background:#126600;color:white"><i class="pe-7s-gift" style="font-size:1.2em;font-weight:bold"></i> Offrir un cadeau</a>
+                        <a href="{{ path('front_gift_connection') }}" class="btn rounded" style="background:#126600;color:white"><i class="pe-7s-gift" style="font-size:1.2em;font-weight:bold"></i> Offrir un cadeau</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    {% if topCategories is not empty %}
     <div class="container container-custom margin_30_95">
         <section class="add_bottom_45">
             <div class="main_title_3">
@@ -173,10 +176,16 @@
                         <div class="col-xl-3 col-lg-6 col-md-6">
                             <a href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}" class="grid_item">
                                 <figure>
-                                    <div class="score"><strong>8.9</strong></div>
-                                    <img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" class="{{ event.title }} {% if event.user %}à {{ event.user.city }}{% endif %}" alt="">
+                                    {% if event.note %}<div class="score"><strong>{{ event.note }}</strong></div>{% endif %}
+                                    <img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" alt="{{ event.title }} {% if event.user %}à {{ event.user.city }}{% endif %}">
                                     <div class="info">
-                                        <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
+                                        <div class="cat_star">
+                                            {% for i in range(1, event.note) %}
+                                                {% if event.note != 0 %}
+                                                <i class="icon_star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
                                         <h3>{{ event.title }}</h3>
                                     </div>
                                 </figure>
@@ -203,10 +212,16 @@
                         <div class="col-xl-3 col-lg-6 col-md-6">
                             <a href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}" class="grid_item">
                                 <figure>
-                                    <div class="score"><strong>8.9</strong></div>
-                                    <img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" class="{{ event.title }} {% if event.user %}à {{ event.user.city }}{% endif %}" alt="">
+                                    {% if event.note %}<div class="score"><strong>{{ event.note }}</strong></div>{% endif %}
+                                    <img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" alt="{{ event.title }} {% if event.user %}à {{ event.user.city }}{% endif %}">
                                     <div class="info">
-                                        <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
+                                        <div class="cat_star">
+                                            {% for i in range(1, event.note) %}
+                                                {% if event.note != 0 %}
+                                                    <i class="icon_star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
                                         <h3>{{ event.title }}</h3>
                                     </div>
                                 </figure>
@@ -232,10 +247,16 @@
                         <div class="col-xl-3 col-lg-6 col-md-6">
                             <a href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}" class="grid_item">
                                 <figure>
-                                    <div class="score"><strong>8.9</strong></div>
-                                    <img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" class="{{ event.title }} {% if event.user %}à {{ event.user.city }}{% endif %}" alt="">
+                                    {% if event.note %}<div class="score"><strong>{{ event.note }}</strong></div>{% endif %}
+                                    <img src="{{ asset( constant('App\\Services\\File\\UploadFile::IMAGE_UPLOAD_DIR')) ~ event.firstPhoto.url }}" alt="{{ event.title }} {% if event.user %}à {{ event.user.city }}{% endif %}">
                                     <div class="info">
-                                        <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
+                                        <div class="cat_star">
+                                            {% for i in range(1, event.note) %}
+                                                {% if event.note != 0 %}
+                                                    <i class="icon_star"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
                                         <h3>{{ event.title }}</h3>
                                     </div>
                                 </figure>
@@ -250,6 +271,7 @@
         <!-- /section -->
     </div>
     <!-- /container -->
+    {% endif %}
 
     <div class="call_section" style="background:url({{ asset('img/atelier-cuisine.jpg') }}) center center no-repeat fixed;background-size:cover;">
         <div class="container clearfix">

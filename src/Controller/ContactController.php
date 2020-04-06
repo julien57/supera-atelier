@@ -22,7 +22,7 @@ class ContactController extends AbstractController
 
             $message = (new \Swift_Message('Contact SuperAtelier'))
                 ->setFrom($contactDTO->getEmail())
-                ->setTo('contact@superatelier.fr')
+                ->setTo('contact@passionatelier.fr')
                 ->setBody(
                     $this->renderView(
                         'front/mail/contact.html.twig',

@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ event.title }} | PassionAtelier{% endblock %}
+{% block description %}{000{% endblock %}
+
 {% block style %}
     {% if app.request.attributes.get('_route') == 'front_event_single' %}
         <style>
@@ -52,6 +55,8 @@
                             </div>
                         </div>
                         {% endif %}
+                    {% else %}
+                        <p>Aucune date prévue pour le moment.</p>
                     {% endfor %}
                 </div>
             </div>

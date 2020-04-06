@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
+     <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier-pain.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
         <div class="wrapper">
             <div class="container">
                 <h1 class="fadeInUp animated"><span></span>Mentions Légales</h1>
@@ -11,18 +11,16 @@
 
     <div class="bg_color_1">
         <div class="container margin_60_35">
-            <div class="pricing-container cd-has-margins">
                 <div class="main_title_2">
                     <span><em></em></span>
                     <h2>Mentions Légales</h2>
                 </div>
 
-                <div class="row mt-4">
+                <div class="mt-4">
                     <p>{{ page.mentions|raw }}</p>
                 </div>
 
             </div>
             <!-- /pricing-container -->
-        </div>
     </div>
 {% endblock %}

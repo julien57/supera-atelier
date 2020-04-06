@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Ateliers de la catégorie {{ eventType.name }}{% endblock %}
+{% block description %}{{ events|length }} ateliers disponibles dans la catégorie {{ eventType.name }}, participez vous aussi à ces ateliers !{% endblock %}
+
 {% block body %}
     <section class="hero_in tours" style="background-image:url({{ asset('img/cuisine-enfant-categorie.jpg') }});background-position:top;background-repeat:no-repeat;background-size:cover">
         <div class="wrapper">
