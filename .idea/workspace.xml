@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/passionatelier-atelier-patisserie.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/tables.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/tables.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sass/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/sass/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/participant_workshop_reserved.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/participant_workshop_reserved.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/inc/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/header.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/pdf/gift_card_amount.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/pdf/gift_card_amount.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/pdf/gift_card_workshop.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/pdf/gift_card_workshop.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/subscription_step1.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/subscription_step1.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/connexion.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/connexion.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/subscription_client.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/subscription_client.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,11 +287,11 @@
     </state>
     <state x="-1281" y="192" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584979678366" />
     <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585413703107" />
-    <state x="-1247" y="108" width="1042" height="740" key="find.popup" timestamp="1586280311708">
+    <state x="-1247" y="108" width="1042" height="740" key="find.popup" timestamp="1586285299348">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1368" y="85" width="816" height="550" key="find.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585045517688" />
-    <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586280311708" />
+    <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586285299348" />
     <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585829101572" />
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup" timestamp="1585390757834">
       <screen x="-1920" y="-49" width="1920" height="1080" />

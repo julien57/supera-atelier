@@ -6228,7 +6228,7 @@ ul.list_feat li p {
 }
 
 .box_1 {
-  background-color: #121921;
+  background-color: #802826;
   color: #fff;
   padding: 45px;
   opacity: 0;
@@ -6831,7 +6831,7 @@ ul.bullets li:before {
   animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
-  background: #0054a6;
+  background: white;
 }
 
 .block-reveal img {

@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
         <meta name="author" content="Ansonika">
-        <title>Connexion | SuperAtelier</title>
+        <title>Connexion | PassionAtelier</title>
 
         <!-- Favicons-->
         <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon">
@@ -43,7 +43,7 @@
     <div id="login">
         <aside>
             <figure>
-                <a href="{{ path('front_home_index') }}">SuperAtelier</a>
+                <a href="{{ path('front_home_index') }}">PassionAtelier</a>
             </figure>
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
@@ -57,8 +57,8 @@
             {% endfor %}
             {{ include('front/inc/login_form.html.twig') }}
 
-            <div class="text-center add_top_10">Nouveau sur SuperAtelier ? <strong><a href="{{ path('front_client_subscription') }}">Inscrivez-vous !</a></strong></div>
-            <div class="copy">© {{ 'now'|date('Y') }} SuperAtelier</div>
+            <div class="text-center add_top_10">Nouveau sur PassionAtelier ? <strong><a href="{{ path('front_client_subscription') }}">Inscrivez-vous !</a></strong></div>
+            <div class="copy">© {{ 'now'|date('Y') }} PassionAtelier</div>
         </aside>
     </div>
     <!-- /login -->
