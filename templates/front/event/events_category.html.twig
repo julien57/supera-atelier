@@ -34,9 +34,9 @@
                             <div class="wrapper">
                                 <h3><a href="{{ path('front_event_single', {'id': event.id, 'category': event.eventType.slug, 'slug': event.slug}) }}">{{ event.title }}</a></h3>
                                 <p>{{ event.description|slice(0,130) }}</p>
-                                <span class="price"><i class="icon_house mr-1 mt-2" style="color:rgb(143,60,0)"></i> {{ event.user.zipCode }}, {{ event.user.city }}</span><br>
-                                <span class="price mt-1"><i class="icon_creditcard mr-1" style="color:rgb(143,60,0)"></i>  <strong>{{ event.price }}€</strong> / par personne</span><br>
-                                {% if app.user and app.user.moneyGift > 0 %}{% set priceEventWithGift = event.price - app.user.moneyGift %}<span class="price mt-1"><i class="icon_gift mr-1" style="color:rgb(143,60,0)"></i> <strong>{{ priceEventWithGift > 0 ? priceEventWithGift : 0 }}€</strong>  avec votre bon cadeau{% endif %}</span><br>
+                                <span class="price"><i class="icon_house mr-1 mt-2" style="color:#800200"></i> {{ event.user.zipCode }}, {{ event.user.city }}</span><br>
+                                <span class="price mt-1"><i class="icon_creditcard mr-1" style="color:#800200"></i>  <strong>{{ event.price }}€</strong> / par personne</span><br>
+                                {% if app.user and app.user.moneyGift > 0 %}{% set priceEventWithGift = event.price - app.user.moneyGift %}<span class="price mt-1"><i class="icon_gift mr-1" style="color:#800200"></i> <strong>{{ priceEventWithGift > 0 ? priceEventWithGift : 0 }}€</strong>  avec votre bon cadeau{% endif %}</span><br>
                             </div>
                             <ul>
                                 <li><i class="icon_clock_alt"></i> {% if event.getFirstWorkshopDates %}{{ event.getFirstWorkshopDates.duration }}{% endif %}</li>
