@@ -50,7 +50,7 @@
                                 {% if places <= 0 %}
                                     <button type="button" class="btn btn-danger">Complet</button>
                                 {% else %}
-                                    <a href="{{ path('front_reservation_informations', {'id': date.id}) }}" class="btn btn-success">Réserver</a>
+                                    <a href="{{ path('front_reservation_informations', {'id': date.id}) }}" class="btn" style="background:#802826;color:white">Réserver</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                             </div>
                         {% endif %}
                         <div class="price mb-0">
-                            <span><a href="#sign-in-dialog" id="button-display-dates" class="btn btn-success">Voir les dates</a></span>
+                            <span><a href="#sign-in-dialog" id="button-display-dates" class="btn" style="background:#802826;color:white">Voir les dates</a></span>
                         </div>
                         {% if app.session.get('btnOffertWorkshop') %}
                             <div class="price mt-2 mb-0 mt-5" style="border-bottom:0">

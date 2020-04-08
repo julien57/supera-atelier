@@ -23,7 +23,7 @@
 			var doReturn = false;
 		}
 		var defaults = {
-			message: 'SuperAtelier utilise les cookies.', //Message displayed on bar
+			message: 'PassionAtelier utilise les cookies.', //Message displayed on bar
 			acceptButton: true, //Set to true to show accept/enable button
 			acceptText: 'J’accepte', //Text on accept/enable button
 			acceptFunction: function(cookieValue){if(cookieValue!='enabled' && cookieValue!='accepted') window.location = window.location.href;}, //Function to run after accept

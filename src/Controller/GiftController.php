@@ -63,10 +63,10 @@ class GiftController extends AbstractController
         if ($this->getUser()) {
             $this->session->set('userId', $this->getUser()->getId());
 
-            if ($this->session->get('eventIdGift')) {
+            if ($this->session->get('choiceAmount')) {
                 return $this->redirectToRoute('front_gift_choice_amount');
             } else {
-                return $this->redirectToRoute('front_gift_choice_gift');
+                return $this->redirectToRoute('front_search_event');
             }
         }
 
@@ -102,11 +102,17 @@ class GiftController extends AbstractController
     {
         $this->session->set('btnOffertWorkshop', 'btnOffertWorkshop');
 
-        if (!$this->session->get('userId')) {
-            return $this->redirectToRoute('front_gift_connection');
-        }
-
         return $this->render('front/gift/choice_gift.html.twig');
+    }
+
+    /**
+     * @Route("/choice-amount", name="redirect_choice_amount")
+     */
+    public function redirectAmount()
+    {
+        $this->session->set('choiceAmount', 'choiceAmount');
+
+        return $this->redirectToRoute('front_gift_connection');
     }
 
     /**
@@ -339,7 +345,7 @@ class GiftController extends AbstractController
 
         $template = $this->session->get('eventIdGift') ? 'front/mail/gift_card_workshop.html.twig' : 'front/mail/gift_card_amount.html.twig';
 
-        $message = (new \Swift_Message('Carte cadeau SuperAtelier'))
+        $message = (new \Swift_Message('Carte cadeau PassionAtelier'))
             ->setFrom('contact@passionatelier.com')
             ->setTo($giftAmount->getUser()->getEmail())
             ->setBody(

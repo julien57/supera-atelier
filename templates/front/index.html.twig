@@ -54,7 +54,7 @@
             <div class="col-md-2 p-0 m-auto">
                 <a class="box_feat mb-0" style="{% if category.name|length >= 13 %}padding-left:10px;padding-right:10px;padding-bottom:35px;{% endif %}"
                    href="{{ path('front_event_category', {'slug': category.slug}) }}">
-                    <img class="{{ category.slug }}" style="width:70px;height:70px;" src="{{ asset( constant('App\\Services\\File\\UploadFile::ICON_UPLOAD_DIR')) ~ category.icon }}">
+                    <img class="{{ category.slug }}" style="width:70px;height:70px;margin-bottom:20px" src="{{ asset( constant('App\\Services\\File\\UploadFile::ICON_UPLOAD_DIR')) ~ category.icon }}">
                     <h3 style="{% if category.name|length >= 13 %}font-size:1em;{% endif %}">{{ category.name }}</h3>
                 </a>
             </div>
@@ -72,7 +72,7 @@
             <div class="col-lg-5 wow animated" data-wow-offset="150" style="visibility: visible;">
                 <figure class="block-reveal">
                     <div class="block-horizzontal"></div>
-                    <img src="{{ asset('img/cuisine-pate.jpg') }}" style="max-height:520px" class="img-fluid" alt="">
+                    <img src="{{ asset('img/cuisine-pate.jpg') }}" style="max-height:520px;float:right" class="img-fluid" alt="">
                 </figure>
             </div>
             <div class="col-lg-6">
@@ -154,7 +154,7 @@
                     <div class="box_1">
                         <h3>A la recherche d'un cadeau originale ?</h3>
                         <p>Si vous êtes à la recherche d'un cadeau originale et exclusif, vous êtes au bon endroit !</p>
-                        <a href="{{ path('front_gift_connection') }}" class="btn rounded" style="background:white;color:#802826"><i class="pe-7s-gift" style="font-size:1.2em;font-weight:bold"></i> Offrir un cadeau</a>
+                        <a href="{{ path('front_gift_choice_gift') }}" class="btn rounded" style="background:white;color:#802826"><i class="pe-7s-gift" style="font-size:1.2em;font-weight:bold"></i> Offrir un cadeau</a>
                     </div>
                 </div>
             </div>

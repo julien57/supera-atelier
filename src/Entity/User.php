@@ -26,7 +26,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message="Veuillez entrer votre adresse mail", groups={"isEnterprise", "notEnterprise"})
      * @Assert\Email(message="L'adresse mail renseignée n'est pas valide", groups={"isEnterprise", "notEnterprise", "isEnterpriseSpace"})
-     * @Assert\Unique(message="Cette adresse mail existe déjà chez SuperAtelier")
+     * @Assert\Unique(message="Cette adresse mail existe déjà chez PassionAtelier")
      */
     private $email;
 

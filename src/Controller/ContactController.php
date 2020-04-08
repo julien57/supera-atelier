@@ -20,7 +20,7 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $message = (new \Swift_Message('Contact SuperAtelier'))
+            $message = (new \Swift_Message('Contact PassionAtelier'))
                 ->setFrom($contactDTO->getEmail())
                 ->setTo('contact@passionatelier.fr')
                 ->setBody(

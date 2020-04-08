@@ -628,7 +628,7 @@ a.btn_1,
 .btn_1 {
   border: none;
   color: #fff;
-  background: #FF4F4D;
+  background: #800200;
   outline: none;
   cursor: pointer;
   display: inline-block;
@@ -688,8 +688,8 @@ a.btn_1.rounded,
 }
 a.btn_1.outline,
 .btn_1.outline {
-  border: 2px solid #FF4F4D;
-  color: #FF4F4D;
+  border: 2px solid #800200;
+  color: #800200;
   padding: 11px 40px;
   background: none;
 }

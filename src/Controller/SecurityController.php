@@ -339,7 +339,7 @@ class SecurityController extends AbstractController
             $userExist = $userRepository->findOneBy(['email' => $form->get('mail')->getData()]);
 
             if (!$userExist) {
-                $this->addFlash('notice', 'Aucun utilisateur SuperAtelier ne correspond à ce mail');
+                $this->addFlash('notice', 'Aucun utilisateur PassionAtelier ne correspond à ce mail');
                 return $this->redirectToRoute('front_client_forgot_password');
             }
 
