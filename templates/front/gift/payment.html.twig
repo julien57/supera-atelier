@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block style %}
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+{% endblock %}
+
 {% block body %}
      <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier-pain.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
         <div class="wrapper">
@@ -47,7 +51,7 @@
                         <div class="step mt-3">
                             <h5>Ou par PayPal</h5>
                             <div class="form-group mt-4">
-                                <a href="{{ path('front_gift_payment_paypal') }}"><img src="{{ asset('img/bouton-paypal.png') }}"></a>
+                                <div id="paypal-button-container"></div>
                             </div>
                         </div>
                     </div>
@@ -108,27 +112,30 @@
   });
 </script>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AUbcq9erAiBeHGCga3RDbso-tWKX8xh0qxaAeGbKOY2XtA0BuIb96WY1LAb1f_YBjex-c4JLw2IfPW3x&currency=EUR"></script>
 <script>
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      // This function sets up the details of the transaction, including the amount and line item details.
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '0.01'
-          }
-        }]
-      });
+    paypal.Button.render({
+    env: 'production',
+    commit: true,
+    locale: 'fr_FR',
+    payment: function() {
+        return paypal.request.post("https://passionatelier.fr/carte-cadeaux/paypal-payment/payment").then(function(data) {
+
+            return data.id;
+        });
     },
-    onApprove: function(data, actions) {
-      // This function captures the funds from the transaction.
-      return actions.order.capture().then(function(details) {
-        // This function shows a transaction success message to your buyer.
-        alert('Transaction completed by ' + details.payer.name.given_name);
-      });
-    }
-  }).render('#paypal-button-container');
-  //This function displays Smart Payment Buttons on your web page.
+    onAuthorize: function(data, actions) {
+        return paypal.request.post("https://passionatelier.fr/carte-cadeaux/paypal-payment/confirm-transaction", {
+            paymentID: data.paymentID,
+            payerID: data.payerID
+        }).then(function(data) {
+            window.location.replace("{{ path('front_gift_success') }}");
+        }).catch(function (err) {
+            console.log(err);
+        });
+    },
+     style: {
+     size: 'responsive'
+     }
+    }, '#paypal-button-container');
 </script>
 {% endblock %}

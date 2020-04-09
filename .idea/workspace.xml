@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Services/Payment/PayPal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/front/gift/error_paypal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/advisor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/advisor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab9f7e9b-ca23-4566-a4bc-633b1cc7d1a3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ab9f7e9b-ca23-4566-a4bc-633b1cc7d1a3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EventRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Payment/StripeClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Payment/StripeClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GiftController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GiftController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/gift/payment_paypal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment_paypal.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/inc/helpbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/helpbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/inc/searchbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/searchbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/reservation/paypal_payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/paypal_payment.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/subscription_step3.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/subscription_step3.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/reservation/payment_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/payment_reservation.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +184,7 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/paypal/rest-api-sdk-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZVGwWNNLVEQxzGBqaOp3trK90z" />
@@ -268,11 +270,11 @@
       <screen x="-1920" y="-180" width="1920" height="1080" />
     </state>
     <state x="-1222" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584991782637" />
-    <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585834967519">
+    <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586432602005">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1222" y="122" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584992450135" />
-    <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585834967519" />
+    <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586432602005" />
     <state x="-1222" y="253" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585642876624" />
     <state x="-1088" y="122" key="SettingsEditor" timestamp="1586031513134">
       <screen x="-1920" y="-49" width="1920" height="1080" />
@@ -294,11 +296,11 @@
     </state>
     <state x="-1281" y="192" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584979678366" />
     <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585413703107" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586376325460">
+    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586432386574">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1368" y="85" width="816" height="550" key="find.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585045517688" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586376325460" />
+    <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586432386574" />
     <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585829101572" />
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup" timestamp="1585390757834">
       <screen x="-1920" y="-49" width="1920" height="1080" />

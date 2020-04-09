@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block style %}
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+{% endblock %}
+
 {% block body %}
 
      <section class="hero_in general start_bg_zoom" style="background-image:url({{ asset('img/atelier-pain.jpg') }});background-position:bottom;background-repeat:no-repeat;background-attachment:fixed;background-size:cover">
@@ -50,7 +54,7 @@
                             <div class="step mt-3">
                                 <h5>Ou par PayPal</h5>
                                 <div class="form-group mt-4">
-                                    <a href="{{ path('front_reservation_payment_paypal') }}"><img src="{{ asset('img/bouton-paypal.png') }}"></a>
+                                    <div id="paypal-button-container"></div>
                                 </div>
                             </div>
                         </div>
@@ -135,5 +139,30 @@
       }
     });
   });
+</script>
+<script>
+    paypal.Button.render({
+    env: 'production',
+    commit: true,
+    locale: 'fr_FR',
+    payment: function() {
+        return paypal.request.post("https://passionatelier.fr/reservation/reservation/paypal-payment/payment").then(function(data) {
+            return data.id;
+        });
+    },
+    onAuthorize: function(data, actions) {
+        return paypal.request.post("https://passionatelier.fr/reservation/reservation/paypal-payment/confirm-transaction", {
+            paymentID: data.paymentID,
+            payerID: data.payerID
+        }).then(function(data) {
+            window.location.replace("{{ path('front_reservation_reservation_succes') }}");
+        }).catch(function (err) {
+            console.log(err);
+        });
+    },
+     style: {
+     size: 'responsive'
+     }
+    }, '#paypal-button-container');
 </script>
 {% endblock %}

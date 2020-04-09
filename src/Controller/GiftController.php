@@ -13,6 +13,7 @@ use App\Repository\EventRepository;
 use App\Repository\GiftAmountRepository;
 use App\Repository\UserRepository;
 use App\Repository\WorkshopDateRepository;
+use App\Services\Payment\PayPal;
 use App\Services\Payment\StripeClient;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
@@ -274,7 +275,7 @@ class GiftController extends AbstractController
     /**
      * @Route("/paiement-paypal", name="front_gift_payment_paypal")
      */
-    public function PaypalPayment(Request $request, SessionInterface $session, UserRepository $userRepository, WorkshopDateRepository $workshopDateRepository, GiftAmountRepository $giftAmountRepository)
+    public function PaypalPayment(Request $request, SessionInterface $session, PayPal $payPal, GiftAmountRepository $giftAmountRepository)
     {
         if (!$this->session->get('userId') || !$this->session->get('giftAmountId') || !$this->session->get('fullInformation')) {
             return $this->redirectToRoute('front_gift_connection');
@@ -303,6 +304,34 @@ class GiftController extends AbstractController
     }
 
     /**
+     * @Route("/paypal-payment/payment", name="front_gift_paypal_payment_payment")
+     */
+    public function paymentPaymentPaypal(PayPal $payPal, GiftAmountRepository $giftAmountRepository)
+    {
+        $giftAmount = $giftAmountRepository->find($this->session->get('giftAmountId'));
+        $paymentId = $payPal->create('https://passionatelier.fr/carte-cadeaux/paypal-payment/payment', 'https://passionatelier.fr/carte-cadeaux/carte-cadeau/erreur', $giftAmount);
+        return $this->json(['id' => $paymentId]);
+    }
+
+    /**
+     * @Route("/paypal-payment/confirm-transaction", name="front_gift_paypal_confirm_transaction")
+     */
+    public function pay(PayPal $payPal, SessionInterface $session)
+    {
+        $request = Request::createFromGlobals();
+        $session->set('isPaypal', true);
+        $payPal->payment($request->request->all());
+    }
+
+    /**
+     * @Route("/carte-cadeau/erreur", name="front_gift_error")
+     */
+    public function errorPayment()
+    {
+        return $this->render('front/gift/error_paypal.html.twig');
+    }
+
+    /**
      * @Route("/carte-cadeau/confirmation", name="front_gift_success")
      */
     public function frontGiftSuccess(UserRepository $userRepository, \Swift_Mailer $mailer, KernelInterface $kernel, GiftAmountRepository $giftAmountRepository)
@@ -321,6 +350,11 @@ class GiftController extends AbstractController
         $giftAmount = $giftAmountRepository->find($this->session->get('giftAmountId'));
         if (!$giftAmount) {
             return $this->redirectToRoute('front_gift_connection');
+        }
+
+        if ($this->session->get('isPaypal')) {
+            $giftAmount->setIsValid(true);
+            $this->em->flush();
         }
 
         $pdfOptions = new Options();

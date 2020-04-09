@@ -10,6 +10,7 @@ use App\Repository\EventRepository;
 use App\Repository\GiftAmountRepository;
 use App\Repository\UserRepository;
 use App\Repository\WorkshopDateRepository;
+use App\Services\Payment\PayPal;
 use App\Services\Payment\StripeClient;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -141,6 +142,46 @@ class ReservationController extends AbstractController
             'priceEvent' => $priceEvent,
             'restCardGift' => $restCardGift
         ]);
+    }
+
+    /**
+     * @Route("/reservation/paypal-payment/payment", name="front_reservation_paypal_payment_payment")
+     */
+    public function paymentPaymentPaypal(PayPal $payPal, WorkshopDateRepository $workshopDateRepository, SessionInterface $session)
+    {
+        $workShopDate = $workshopDateRepository->find($session->get('idWorkshopDate'));
+        $session->set('isPaypalReservation', true);
+        $paymentId = $payPal->createReservation('https://passionatelier.fr/reservation/reservation/paypal-payment/confirm-transaction', 'https://passionatelier.fr/reservation/reservation/paypal-payment/cancel', $workShopDate);
+        return $this->json(['id' => $paymentId]);
+    }
+
+    /**
+     * @Route("/reservation/paypal-payment/cancel", name="front_reservation_paypal_payment_cancel")
+     */
+    public function paymentCancelPaypal()
+    {
+        return $this->render('front/gift/error_paypal.html.twig');
+    }
+
+    /**
+     * @Route("/reservation/paypal-payment/confirm-transaction", name="front_reservation_paypal_confirm_transaction")
+     */
+    public function pay(PayPal $payPal, SessionInterface $session, WorkshopDateRepository $workshopDateRepository)
+    {
+        $workshopDate = $workshopDateRepository->find($session->get('idWorkshopDate'));
+
+        $request = Request::createFromGlobals();
+        $payPal->payment($request->request->all());
+
+        $reservation = new Reservation();
+        $reservation->setUser($this->getUser());
+        $reservation->setWorkshopDate($workshopDate);
+        $reservation->setChargeId('Reservation avec PayPal');
+        $numberOrder = $reservation->getReservedAt()->format('ymd').$workshopDate->getId().$this->getUser()->getId();
+        $reservation->setOrderNumber($numberOrder);
+
+        $this->em->persist($reservation);
+        $this->em->flush();
     }
 
     /**
