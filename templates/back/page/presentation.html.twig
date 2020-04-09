@@ -46,9 +46,6 @@
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Page Présentation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Page Nos valeurs</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" id="avantages-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Page Avantages de proposer atelier</a>
                         </li>
                         <li class="nav-item">
@@ -72,11 +69,6 @@
                                 <div class="form-group">
                                     {{ form_row(form.presentation, {'attr': {'class': 'form-control'}}) }}
                                 </div>
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="form-group">
-                                {{ form_row(form.valeurs, {'attr': {'class': 'form-control'}}) }}
-                            </div>
                         </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="form-group">

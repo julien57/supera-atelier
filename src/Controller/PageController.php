@@ -19,16 +19,6 @@ class PageController extends AbstractController
     }
 
     /**
-     * @Route("/nos-valeurs", name="front_valeurs")
-     */
-    public function valeurs(PageRepository $pageRepository)
-    {
-        return $this->render('front/page/valeurs.html.twig', [
-            'page' => $pageRepository->find(1)
-        ]);
-    }
-
-    /**
      * @Route("/qui-peut-deposer-un-atelier", name="front_depose_atelier")
      */
     public function deposeAtelier(PageRepository $pageRepository)

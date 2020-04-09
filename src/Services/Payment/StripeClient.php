@@ -43,7 +43,7 @@ class StripeClient
         $price = $priceWithGiftCard ? $priceWithGiftCard : $workshopDate->getEvent()->getPrice();
 
         try {
-            Stripe::setApiKey('sk_test_j8Y8Q6aQnSEraSdJWmgWAh4R00dZm9mkZg');
+            Stripe::setApiKey('sk_live_iqktbBggPUkZFaKJ27jpF4rX00SUR2bAgT');
             $charge = Charge::create([
                 'amount' => $price * 100,
                 'currency' => 'EUR',
@@ -75,7 +75,7 @@ class StripeClient
     public function createGiftAmount(User $user, GiftAmount $giftAmount, $token)
     {
         try {
-            Stripe::setApiKey('sk_test_j8Y8Q6aQnSEraSdJWmgWAh4R00dZm9mkZg');
+            Stripe::setApiKey('sk_live_iqktbBggPUkZFaKJ27jpF4rX00SUR2bAgT');
             $charge = Charge::create([
                 'amount' => $giftAmount->getAmount() * 100,
                 'currency' => 'EUR',

@@ -3,13 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/avantage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/avantage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/cgv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/cgv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/cookies.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/cookies.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/depose_atelier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/depose_atelier.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/groups.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/groups.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/presentation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/page/valeurs.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/valeurs.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EventRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EventRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Payment/StripeClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Payment/StripeClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/events_category.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/gift/payment_paypal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment_paypal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/helpbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/helpbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/searchbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/searchbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/reservation/paypal_payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/paypal_payment.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/subscription_step3.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/subscription_step3.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,11 +294,11 @@
     </state>
     <state x="-1281" y="192" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584979678366" />
     <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585413703107" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586340986858">
+    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586376325460">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1368" y="85" width="816" height="550" key="find.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585045517688" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586340986858" />
+    <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586376325460" />
     <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585829101572" />
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup" timestamp="1585390757834">
       <screen x="-1920" y="-49" width="1920" height="1080" />

@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ateliers de la catégorie {{ eventType.name }}{% endblock %}
-{% block description %}{{ events|length }} ateliers disponibles dans la catégorie {{ eventType.name }}, participez vous aussi à ces ateliers !{% endblock %}
+{% block title %}{% if eventType.name is defined %}Ateliers de la catégorie {{ eventType.name }}{% else %}Tous les ateliers{% endif %}{% endblock %}
+{% block description %}
+    {% if eventType.name is defined %}
+    {{ events|length }} ateliers disponibles dans la catégorie {{ eventType.name }}, participez vous aussi à ces ateliers !
+    {% else %}
+        {{ events|length }} ateliers disponibles au total, participez vous aussi à ces ateliers !
+    {% endif %}
+{% endblock %}
 
 {% block body %}
     <section class="hero_in tours" style="background-image:url({{ asset('img/cuisine-enfant-categorie.jpg') }});background-position:top;background-repeat:no-repeat;background-size:cover">
         <div class="wrapper">
             <div class="container">
-                <h1 class="fadeInUp"><span></span>{% if eventType.name is defined %}{{ eventType.name }}{% else %}{{ eventType }}{% endif %}</h1>
+                <h1 class="fadeInUp"><span></span>{{ eventType }}</h1>
             </div>
         </div>
     </section>

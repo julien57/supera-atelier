@@ -61,7 +61,7 @@ class EventRepository extends ServiceEntityRepository
 
         if ($parameters['category']) {
             $qb
-                ->andWhere('et.slug = :eventType')
+                ->andWhere('et.name = :eventType')
                 ->setParameter('eventType', $parameters['category']);
         }
 
