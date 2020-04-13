@@ -7,6 +7,7 @@ use App\Entity\EventType;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -37,6 +38,10 @@ class EventFormType extends AbstractType
             ])
             ->add('formatorName', TextType::class, [
                 'label' => 'Nom du formateur'
+            ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'displayName'
             ])
             ->add('eventType', EntityType::class, [
                 'class' => EventType::class,

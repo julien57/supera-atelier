@@ -43,7 +43,7 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="array")
      */
     private $roles = [];
 
@@ -538,5 +538,10 @@ class User implements UserInterface
         $this->moneyGift = $moneyGift;
 
         return $this;
+    }
+
+    public function displayName()
+    {
+        return $this->firstName.' '.$this->lastName.' ('.$this->email.')';
     }
 }

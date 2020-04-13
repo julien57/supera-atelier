@@ -24,7 +24,7 @@
         <div class="float-right mt-1"><a id="forgot" href="{{ path('front_client_forgot_password') }}">Mot de passe oublié ?</a></div>
     </div>
     <button class="btn_1 rounded full-width">Se connecter à PassionAtelier</button>
-    <input type="hidden" name="_csrf_token"
+    <input type="hidden" name="_csrf_token_auth"
            value="{{ csrf_token('authenticate') }}"
     >
 </form>

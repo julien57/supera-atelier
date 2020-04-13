@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Services/Payment/PayPal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/front/gift/error_paypal.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/advisor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/advisor.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ab9f7e9b-ca23-4566-a4bc-633b1cc7d1a3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ab9f7e9b-ca23-4566-a4bc-633b1cc7d1a3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GiftController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GiftController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/gift/payment.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/reservation/payment_reservation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/reservation/payment_reservation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Back/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Back/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EventFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/AppAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/AppAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/event/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/event/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/event/single.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/single.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/login_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/login_form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +195,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
@@ -236,6 +232,8 @@
       <workItem from="1585403394456" duration="3827000" />
       <workItem from="1585413693807" duration="131475000" />
       <workItem from="1586009901489" duration="14320000" />
+      <workItem from="1586700767605" duration="1000" />
+      <workItem from="1586700952880" duration="2000" />
     </task>
     <servers />
   </component>
@@ -296,20 +294,20 @@
     </state>
     <state x="-1281" y="192" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584979678366" />
     <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585413703107" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586432386574">
+    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586512647110">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1368" y="85" width="816" height="550" key="find.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585045517688" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586432386574" />
+    <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586512647110" />
     <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585829101572" />
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup" timestamp="1585390757834">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585390757834" />
-    <state x="-1295" y="192" width="670" height="676" key="search.everywhere.popup" timestamp="1586200576906">
+    <state x="-1295" y="192" width="670" height="676" key="search.everywhere.popup" timestamp="1586528089409">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1295" y="61" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585000117089" />
-    <state x="-1295" y="192" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586200576906" />
+    <state x="-1295" y="192" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586528089409" />
   </component>
 </project>

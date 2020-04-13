@@ -56,6 +56,13 @@
                                 <small style="color:red">{{ form_errors(form.nbMembers) }}</small>
                             </div>
                         </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                {{ form_label(form.user) }}
+                                {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+                                <small style="color:red">{{ form_errors(form.user) }}</small>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

@@ -60,7 +60,7 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
             $this->redirection = 'front_home_index';
             return true;
         }
-        if ('front_gift_connection' === $request->attributes->get('_route') && $request->get('_csrf_token') && $request->isMethod('POST')) {
+        if ('front_gift_connection' === $request->attributes->get('_route') && $request->get('_csrf_token_auth') && $request->isMethod('POST')) {
             $this->redirection = 'front_gift_connection';
             return true;
         }
@@ -73,7 +73,7 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
         $credentials = [
             'mail' => $request->request->get('mail'),
             'password' => $request->request->get('password'),
-            'csrf_token' => $request->request->get('_csrf_token'),
+            'csrf_token' => $request->request->get('_csrf_token') ? $request->request->get('_csrf_token') : $request->request->get('_csrf_token_auth'),
         ];
 
         $request->getSession()->set(

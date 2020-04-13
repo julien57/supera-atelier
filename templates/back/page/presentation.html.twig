@@ -49,9 +49,6 @@
                             <a class="nav-link" id="avantages-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Page Avantages de proposer atelier</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="depot-atelier-tab" data-toggle="tab" href="#depose" role="tab" aria-controls="depose" aria-selected="false">Page Qui peut déposer atelier</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" id="mentions-tab" data-toggle="tab" href="#mentions" role="tab" aria-controls="mentions" aria-selected="false">Mentions Légales</a>
                         </li>
                         <li class="nav-item">
@@ -73,11 +70,6 @@
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="form-group">
                                 {{ form_row(form.avantagesAtelier, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="depose" role="tabpanel" aria-labelledby="contact-tab">
-                            <div class="form-group">
-                                {{ form_row(form.quipeutdeposer, {'attr': {'class': 'form-control'}}) }}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="mentions" role="tabpanel" aria-labelledby="contact-tab">

@@ -89,6 +89,8 @@ class EventController extends AbstractController
                     $event->addWorkshopDate($workshopDate);
 
                     $this->em->persist($workshopDate);
+
+                    $session->remove($dates);
                 }
             }
 
