@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     /**
-     * @Route("/presentation", name="front_presentation")
+     * @Route("/qui-sommes-nous", name="front_presentation")
      */
     public function presentation(PageRepository $pageRepository)
     {

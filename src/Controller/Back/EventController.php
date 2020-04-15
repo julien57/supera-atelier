@@ -57,7 +57,7 @@ class EventController extends AbstractController
     public function add(Request $request, SessionInterface $session)
     {
         $event = new Event();
-        $form = $this->createForm(EventFormType::class, $event, ['csrf_protection' => false])->handleRequest($request);
+        $form = $this->createForm(EventFormType::class, $event, ['enterpriseField' => true,'csrf_protection' => false])->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -114,7 +114,7 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, SessionInterface $session, Event $event, WorkshopDateRepository $workshopDateRepository)
     {
-        $form = $this->createForm(EventFormType::class, $event, ['csrf_protection' => false])->handleRequest($request);
+        $form = $this->createForm(EventFormType::class, $event, ['enterpriseField' => true, 'csrf_protection' => false])->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 

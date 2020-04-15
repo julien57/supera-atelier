@@ -39,10 +39,6 @@ class EventFormType extends AbstractType
             ->add('formatorName', TextType::class, [
                 'label' => 'Nom du formateur'
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'displayName'
-            ])
             ->add('eventType', EntityType::class, [
                 'class' => EventType::class,
                 'choice_label' => 'name',
@@ -56,7 +52,7 @@ class EventFormType extends AbstractType
             ])
         ;
 
-        if (isset($options['entrerpriseField']) && $options['entrerpriseField']) {
+        if ($options['enterpriseField'] && $options['enterpriseField'] === true) {
             $builder
                 ->add('user', EntityType::class, [
                     'class' => User::class,

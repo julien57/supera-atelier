@@ -86,7 +86,7 @@ class SecurityController extends AbstractController
     public function subscriptionStep1(Request $request, SessionInterface $session)
     {
         $event = new Event();
-        $form = $this->createForm(EventFormType::class, $event, ['enterpriseField' => true, 'csrf_protection' => false])->handleRequest($request);
+        $form = $this->createForm(EventFormType::class, $event, ['enterpriseField' => false, 'csrf_protection' => false])->handleRequest($request);
 
         if ($request->isMethod('POST')) {
             $submittedToken = $request->request->get('token');

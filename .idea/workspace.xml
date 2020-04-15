@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c25f4796-db21-46d2-a254-8fb0493a0a75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Api/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Back/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Back/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/EventFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/AppAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/AppAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/event/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/event/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/page/presentation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/event/single.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/event/single.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/front/inc/login_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/login_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/inc/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/inc/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/page/presentation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/page/presentation.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,16 +41,16 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - advisordb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="advisordb@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - advisordb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="advisordb@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - advisordb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="advisordb@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="advisordb: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
@@ -234,6 +236,11 @@
       <workItem from="1586009901489" duration="14320000" />
       <workItem from="1586700767605" duration="1000" />
       <workItem from="1586700952880" duration="2000" />
+      <workItem from="1586772514764" duration="359000" />
+      <workItem from="1586790894140" duration="664000" />
+      <workItem from="1586850320675" duration="801000" />
+      <workItem from="1586852220154" duration="2975000" />
+      <workItem from="1586957428236" duration="1040000" />
     </task>
     <servers />
   </component>
@@ -246,11 +253,12 @@
     </state>
     <state x="-1372" y="153" key="#CLI_Interpreters/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586031499202" />
     <state x="-1372" y="153" key="#CLI_Interpreters/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585064968750" />
-    <state x="-1360" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585065249539">
-      <screen x="-1920" y="-49" width="1920" height="1080" />
+    <state x="1027" y="122" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586852567517">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-1360" y="25" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584919603649" />
     <state x="-1360" y="156" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585065249539" />
+    <state x="1027" y="122" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1586852567517" />
     <state x="-1263" y="301" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585648113513">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
@@ -289,17 +297,19 @@
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>
     <state x="-1053" y="385" width="342" height="223" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585490564902" />
-    <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog" timestamp="1585413703107">
-      <screen x="-1920" y="-49" width="1920" height="1080" />
+    <state x="639" y="372" key="com.intellij.ide.util.TipDialog" timestamp="1586852220526">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-1281" y="192" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1584979678366" />
     <state x="-1281" y="323" key="com.intellij.ide.util.TipDialog/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585413703107" />
-    <state x="-1360" y="94" width="1042" height="740" key="find.popup" timestamp="1586512647110">
-      <screen x="-1920" y="-49" width="1920" height="1080" />
+    <state x="639" y="372" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1586852220526" />
+    <state x="560" y="143" width="1042" height="740" key="find.popup" timestamp="1586957866555">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-1368" y="85" width="816" height="550" key="find.popup/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1585045517688" />
     <state x="-1360" y="94" width="1042" height="740" key="find.popup/0.0.1920.1080/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1586512647110" />
     <state x="-1247" y="108" width="1042" height="740" key="find.popup/0.23.1920.1057/-1920.-49.1920.1080@-1920.-49.1920.1080" timestamp="1585829101572" />
+    <state x="560" y="143" width="1042" height="740" key="find.popup/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1586957866555" />
     <state x="-1311" y="225" width="700" height="530" key="recent.locations.popup" timestamp="1585390757834">
       <screen x="-1920" y="-49" width="1920" height="1080" />
     </state>

@@ -17,16 +17,13 @@
     <nav id="menu" class="main-menu">
         <ul>
             <li><span><a class="font-weight-bold" href="{{ path('front_home_index') }}">Accueil</a></span></li>
-            {% if (app.user and app.user.isEnterprise == true) or is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
-                <li style="margin-top:-5px"><span><a class="btn_1 rounded pt-2 pb-2 font-weight-bold" href="{{ path('event_security_subscription_step1') }}" style="background:#802826;color:white!important;">Déposez votre atelier</a></span></li>
-            {% endif %}
-                <li><span><a class="font-weight-bold" href="{{ path('front_gift_choice_gift') }}">Offrir un atelier</a></span></li>
+            <li><span><a class="font-weight-bold" href="{{ path('front_gift_choice_gift') }}">Offrir un atelier</a></span></li>
+            <li><span><a class="font-weight-bold" href="{{ path('front_presentation') }}">Qui sommes-nous ?</a></span></li>
             {% if app.user %}
                 <li><span><a class="font-weight-bold" href="{{ path('front_space_home') }}">Mon espace</a></span></li>
                 <li><span><a class="font-weight-bold" href="{{ path('app_logout') }}">Déconnexion</a></span></li>
             {% else %}
-                <li><span><a class="font-weight-bold" href="{{ path('front_client_subscription') }}">Inscription</a></span></li>
-                <li><span><a class="font-weight-bold" href="{{ path('app_front_login') }}">Connexion</a></span></li>
+                <li><span style="display:flex;"><a class="font-weight-bold" href="{{ path('app_front_login') }}">Connexion</a> / <a class="font-weight-bold" href="{{ path('front_client_subscription') }}">Inscription</a></span></li>
             {% endif %}
         </ul>
     </nav>
